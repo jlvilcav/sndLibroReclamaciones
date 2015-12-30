@@ -16,7 +16,8 @@ class perNaturalRepo extends BaseRepo{
         return \DB::table('pernatural')
             ->join('ubigeos', 'perNatural.IDX_UBIGEO', '=', 'ubigeos.IDX_UBIGEO')
             ->select('pernatural.*', 'ubigeos.*')
-            ->get();;
+            ->where('pernatural.IDX_NUM_DOCU','=',$dni)
+            ->get();
     }
     public function add(){
         $inputs = $this->getInputs();

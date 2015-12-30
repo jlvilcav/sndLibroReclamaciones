@@ -21,4 +21,11 @@ class perJuridicaRepo extends BaseRepo
     public function find($id){
         return libReclamos::findOrFail($id);
     }
+    public function findByRuc($ruc){
+        return \DB::table('perjuridica')
+            ->join('ubigeos', 'perjuridica.IDX_UBIGEO', '=', 'ubigeos.IDX_UBIGEO')
+            ->select('perjuridica.*', 'ubigeos.*')
+            ->where('perjuridica.IDX_NUM_DOCU','=',$ruc)
+            ->get();
+    }    
 }

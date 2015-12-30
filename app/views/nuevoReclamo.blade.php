@@ -352,7 +352,7 @@
 																   class="form-control text-uppercase"
 																   id="txtJuriRuc"
 																   maxlength="11">
-															<span class="input-group-addon" style="cursor:pointer;" onclick="buscaPersonaRUC()"><i class="fa fa-search"></i></span>
+															<span class="input-group-addon" style="cursor:pointer;" id="buscarJuridica"><i class="fa fa-search"></i></span>
 														</div>
 													</div>
 												</div>

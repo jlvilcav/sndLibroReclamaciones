@@ -15,7 +15,6 @@ abstract  class BaseRepo
     public $inputs;
     public function __construct(){
         $this->model = $this->getModel();
-        $this->numPaginate = 10;
     }
     abstract function getModel();
     public function find($id){

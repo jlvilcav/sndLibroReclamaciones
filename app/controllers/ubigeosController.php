@@ -18,4 +18,13 @@ class ubigeosController extends BaseController
     public function add(){
         return $this->ubigeosRepo->add();
     }
+    public function listaDepa(){
+        return $this->ubigeosRepo->listaDepa();
+    }
+    public function listaProv($id){
+        return $this->ubigeosRepo->listaProv($id);
+    }
+    public function listaDist($id){
+        return $this->ubigeosRepo->listaDist($id);
+    }
 }

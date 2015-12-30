@@ -18,8 +18,7 @@ class libReclamosController extends BaseController
     public function add(){
         return $this->libReclamosRepo->add();
     }
-    public function mostrarForm(){
-        echo 'hola mundo controller<br>';
-        return $this->mostrarFormX();
+    public function mostrarFormX(){
+        return $this->libReclamosRepo->mostrarFormX();
     }
 }

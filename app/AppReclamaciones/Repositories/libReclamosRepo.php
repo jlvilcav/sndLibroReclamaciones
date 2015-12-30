@@ -9,17 +9,18 @@
 namespace AppReclamaciones\Repositories;
 use AppReclamaciones\Entities\libReclamos;
 use AppReclamaciones\Repositories\ubigeosRepo;
+use AppReclamaciones\Repositories\tipDocumentoRepo;
 
 class libReclamosRepo extends BaseRepo
 {
     public function getModel(){
-        return new libReclamos();
+        return new libReclamos;
     }
     public function getAll(){
         return libReclamos::all();
     }
     public function find($id){
-        return libReclamos::findOrFail($id);
+        return libReclamos::find($id);
     }
     public function add(){
         $inputs = $this->getInputs();
@@ -47,14 +48,17 @@ class libReclamosRepo extends BaseRepo
         return $obj->IDX_NAT;
     }
     public function mostrarFormX(){
-        return 'hola';
-
-        /*return 'hola mundo<br>';
-        $obUbigeo = new ubigeosRepo;
-        $ubigeos = $obUbigeo->getDiez();
+        $objTipDoc = new tipDocumentoRepo;
+        $objPais = new ubigeosRepo;
+        //$objProv = new ubigeosRepo;
         $data = array(
-            'ubigeos' => $ubigeos
-        );*/
-        //return \View::make('nuevoReclamo');
+            'tipo_doc' => $objTipDoc->listaCombo(),
+            'pais' => $objPais->listaDepa(),
+            //'provincia' => $objProv -> listaProv()
+        );
+
+
+
+        return \View::make('nuevoReclamo',$data);
     }
 }

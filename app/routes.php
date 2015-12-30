@@ -12,13 +12,15 @@
 */
 
 //Route::get('/',array('uses' => 'libReclamosController@mostrarForm') );
-Route::get('/', function(){
-return View::make('nuevoReclamo');
-});
+Route::get('/', array('uses' => 'libReclamosController@mostrarFormX'));
 
-Route::get('/tipDocumento',array('uses' => 'tipDocuController@mostrarForm') );
+Route::get('/tipDocumento',array('uses' => 'tipDocuController@listaCombo') );
+
 
 
 Route::get('/ubigeos',array('uses' => 'ubigeosController@index'));
+Route::get('/ubigeos/prov/{id}',array('uses' => 'ubigeosController@listaProv'));
+
+
 Route::get('/pernatual',array('uses' => 'perNaturalController@add'));
 //Route::get('/tipDocumento',array('uses' => 'tipDocuController@index'));

@@ -23,4 +23,7 @@ class tipDocuController extends BaseController
 
         return $this->tipDocumentoRepo->mostrarLista();
     }
+    public function listaCombo(){
+        return $this->tipDocumentoRepo->listaCombo();
+    }
 }

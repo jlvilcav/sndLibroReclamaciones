@@ -12,7 +12,7 @@ use AppReclamaciones\Entities\tipDocumento;
 class tipDocumentoRepo extends BaseRepo
 {
     public function getModel(){
-        return new tipDocumento();
+        return new tipDocumento;
     }
     public function getAll(){
         return tipDocumento::all();
@@ -20,21 +20,10 @@ class tipDocumentoRepo extends BaseRepo
     public function find($id){
         return tipDocumento::findOrFail($id);
     }
-    public function mostrarLista(){
-        
-        $obTipDoc = new tipDocumentoRepo;
-        $TipDoc  = $obTipDoc ->getAll();
-        $data = array(
-            'tipDocumento' => $TipDoc
-        );/**/
-        //
-        return $data; //\View::make('nuevoReclamo');
-    }
-
     public function listaCombo(){
     	$obTipDoc = new tipDocumentoRepo;
-    	$tipDocList = DB::table('tipDocumento')
-    							->select(DB::raw('IDX_TIPDOC, DES_TIPDOC'))
+    	$tipDocList = \DB::table('tipDocumento')
+    							->select('IDX_TIPDOC','DES_TIPDOC')
     							->where('BIT_ACTIVO', '=', 1)
     							->get();
     							

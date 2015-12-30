@@ -23,4 +23,28 @@ class ubigeosRepo extends BaseRepo
     public function find($id){
         return Ubigeos::findOrFail($id);
     }
+
+    public function listaDepa(){
+        $obUbiPais = new ubigeosRepo;
+        $ubiPais = \DB::table('ubigeos')
+                                ->select('COD_DEPA_CONTINENTE','DES_DEPA_CONTINENTE')
+                                ->distinct()
+                                ->where('BIT_ACTIVO', '=', 1)
+                                ->get();
+                                
+        return  $ubiPais;
+    }
+    public function listaProv($id){
+        $obUbiPais = new ubigeosRepo;
+        $ubiPais = \DB::table('ubigeos')
+                                ->select('COD_PROV_PAIS','DES_PROV_PAIS')
+                                ->distinct()
+                                ->where('BIT_ACTIVO', '=', 1)
+                                ->where('COD_DEPA_CONTINENTE', '=', $id )                                
+                                ->get();
+                                
+        return  $ubiPais;
+    }
+
+
 }

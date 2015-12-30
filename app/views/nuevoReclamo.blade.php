@@ -410,12 +410,15 @@
 												<div class="form-group col-sm-12 col-md-12">
 													<label class="col-sm-12 col-md-3">Domicilio Real</label>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboDepPJR" onchange="getUbigeo('DepPJR','ProPJR', 'DisPJR')" >
-															<?php //echo $this->selectUbigeoDep; ?>
+														<select class="form-control" id="cboDepPJR" " >
+															<option value="-1">Seleccione Dpto</option>
+																@foreach ($pais as $p)
+    																<option value="{{ $p->COD_DEPA_CONTINENTE }}">{{ $p->DES_DEPA_CONTINENTE }}</option>
+																@endforeach	
 														</select>
 													</div>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboProPJR" onchange="getUbigeo('ProPJR','DisPJR','')">
+														<select class="form-control" id="cboProPJR" ">
 															<?php //echo $this->selectUbigeoPro; ?>
 														</select>
 													</div>
@@ -506,7 +509,7 @@
 											   id="txtNomInstDenunciada"
 											   class="form-control text-uppercase"
 											   placeholder="">
-										<select class="form-control" id="cboUniversidad" onchange="otraUni()" style="visibility: hidden">
+										<select class="form-control" id="cboUniversidad" onchange="otraUni()" style="visibility: hidden" hidden>
 											<option value="0" >Otra entidad</option>
 											<?php //echo $this->selectUniversidad; ?>
 										</select>
@@ -553,14 +556,14 @@
 								</div>
 							</div>
 						</div>
-						<div class="row" style="visibility: hidden">
+						<div class="row" style="visibility: hidden" hidden>
 							<div class="col-sm-12 col-md-12">
 								<p style="text-decoration:underline;">
 									Identificación de la Atención Brindada
 								</p>
 							</div>
 						</div>
-						<div class="row" style="visibility: hidden">
+						<div class="row" style="visibility: hidden" hidden>
 							<div class="form-horizontal col-sm-12 col-md-12">
 								<div class="form-group col-sm-12 col-md-2">
 									<div class="col-sm-12 col-md-12">
@@ -578,7 +581,7 @@
 								</div>
 							</div>
 						</div >
-						<div class="row" style="visibility: hidden">
+						<div class="row" style="visibility: hidden" hidden>
 							<div class="col-sm-12 col-md-12">
 								<p style="text-decoration:underline;">
 									DETALLES SOBRE LA PRESUNTA INFRACCI&Oacute;N

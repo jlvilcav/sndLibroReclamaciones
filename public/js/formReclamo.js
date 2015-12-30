@@ -1,5 +1,5 @@
 var dominio = document.domain;
-var urlBase = "http://"+ dominio +"/sndLibroReclamaciones/public/";
+var urlBase = "http://"+ dominio +"/reclamaciones/public/";
 
 function getDataSelect(url,classControl,textoSeleccion,campoValor, campoTexto){
 	var request = $.ajax({
@@ -39,6 +39,22 @@ $(document).on('ready',function(){
 		var url = urlBase + 'ubigeos/dis/' + id;
 		if(Number(id) > 0){
 			getDataSelect(url,'#cboDisPNR','Seleccione Distrito','COD_DIST_CIUDAD','DES_DIST_CIUDAD');
+		}
+	});
+
+	$('#cboDepPJR').on('change',function(){
+		var id = $(this).val();
+		var url = urlBase + 'ubigeos/prov/' + id;
+		if(Number(id) > 0){
+			getDataSelect(url,'#cboProPJR','Seleccione Distrito','COD_PROV_PAIS','DES_PROV_PAIS');
+		}
+	});
+
+	$('#cboProPJR').on('change',function(){
+		var id = $(this).val();
+		var url = urlBase + 'ubigeos/dis/' + id;
+		if(Number(id) > 0){
+			getDataSelect(url,'#cboDisPJR','Seleccione Distrito','COD_DIST_CIUDAD','DES_DIST_CIUDAD');
 		}
 	});
 });

@@ -24,4 +24,7 @@ class ubigeosController extends BaseController
     public function listaProv($id){
         return $this->ubigeosRepo->listaProv($id);
     }
+    public function listaDist($id){
+        return $this->ubigeosRepo->listaDist($id);
+    }
 }

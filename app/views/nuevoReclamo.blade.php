@@ -276,7 +276,7 @@
 														</select>
 													</div>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboProPNR" onchange="getUbigeo('ProPNR','DisPNR','')">
+														<select class="form-control" id="cboProPNR" >
 															<?php //echo $this->selectUbigeoPro; ?>
 														</select>
 													</div>

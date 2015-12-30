@@ -10,7 +10,13 @@ class perNaturalRepo extends BaseRepo{
         return perNatural::all();
     }
     public function find($id){
-        return perNatural::findOrFail($id);
+        return perNatural::find($id);
+    }
+    public function findByDni($dni){
+        return \DB::table('pernatural')
+            ->join('ubigeos', 'perNatural.IDX_UBIGEO', '=', 'ubigeos.IDX_UBIGEO')
+            ->select('pernatural.*', 'ubigeos.*')
+            ->get();;
     }
     public function add(){
         $inputs = $this->getInputs();

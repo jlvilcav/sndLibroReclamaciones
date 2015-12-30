@@ -201,7 +201,7 @@
 																   class="form-control"
 																   id="hidIdxDenunciante"
 																   maxlength="8">
-															<span class="input-group-addon" style="cursor:pointer;" onclick="buscaPersonaDNI()"><i class="fa fa-search"></i></span>
+															<span class="input-group-addon" style="cursor:pointer;" id="buscarNatural"><i class="fa fa-search"></i></span>
 														</div>
 													</div>
 												</div>

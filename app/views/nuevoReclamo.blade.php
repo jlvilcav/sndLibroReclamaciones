@@ -172,7 +172,7 @@
 									</h4>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
+									<div class="panel-body" id="panelNatural">
 										<div class="row">
 											<div class="form-horizontal col-sm-12 col-md-6">
 												<div class="form-group col-sm-12 col-md-12">
@@ -340,7 +340,7 @@
 									</h4>
 								</div>
 								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">
+									<div class="panel-body" id="panelJuridica">
 										<div class="row">
 											<div class="form-horizontal col-sm-12 col-md-6">
 												<div class="form-group col-sm-12 col-md-12">

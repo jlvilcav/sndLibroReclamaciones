@@ -19,7 +19,7 @@ class perJuridicaRepo extends BaseRepo
         return libReclamos::all();
     }
     public function find($id){
-        return libReclamos::findOrFail($id);
+        return libReclamos::find($id);
     }
     public function findByRuc($ruc){
         return \DB::table('perjuridica')

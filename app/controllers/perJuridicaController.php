@@ -19,4 +19,7 @@ class perJuridicaController extends BaseController
     public function add(){
         return $this->perJuridicaRepo->add();
     }
+    public function findByRuc($ruc){
+        return $this->perJuridicaRepo->findByRuc($ruc);
+    }
 }

@@ -12,5 +12,6 @@ namespace AppReclamaciones\Entities;
 class perNatural extends \Eloquent
 {
     protected $table = 'perNatural';
+	protected $fillable = array('id');
     protected $hidden = array('password', 'remember_token');
 }

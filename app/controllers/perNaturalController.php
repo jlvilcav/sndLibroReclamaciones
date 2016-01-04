@@ -18,4 +18,7 @@ class perNaturalController extends BaseController
     public function add(){
         return $this->perNaturalRepo->add();
     }
+    public function findByDni($dni){
+        return $this->perNaturalRepo->findByDni($dni);
+    }
 }

@@ -1,0 +1,1 @@
+Estimado Cliente: le enviamos este correo con copia en formato pdf de su reclamacion con numero autogenerado. Gracias

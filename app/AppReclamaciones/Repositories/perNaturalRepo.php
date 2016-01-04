@@ -10,11 +10,17 @@ class perNaturalRepo extends BaseRepo{
         return perNatural::all();
     }
     public function find($id){
-        return perNatural::findOrFail($id);
+        return perNatural::find($id);
     }
-    public function add(){
-        $inputs = $this->getInputs();
-        //return dd($inputs);
+    public function findByDni($dni){
+        return \DB::table('pernatural')
+            ->join('ubigeos', 'perNatural.IDX_UBIGEO', '=', 'ubigeos.IDX_UBIGEO')
+            ->select('pernatural.*', 'ubigeos.*')
+            ->where('pernatural.IDX_NUM_DOCU','=',$dni)
+            ->get();
+    }
+    public function add($inputsE){
+        $inputs = $this->getInputs() ? $this->getInputs() : $inputsE ;
         $obj = new perNatural;
         $obj->IDX_NUM_DOCU = $inputs['IDX_NUM_DOCU'];
         $obj->NOMBRE = $inputs['NOMBRE'];
@@ -26,15 +32,14 @@ class perNaturalRepo extends BaseRepo{
         $obj->EMAIL = $inputs['EMAIL'];
         $obj->TEL_FIJO = $inputs['TEL_FIJO'];
         $obj->NUM_CELU = $inputs['NUM_CELU'];
-        $obj->IDX_USUA_CREA = $inputs['IDX_USUA_CREA'];
-        $obj->FEC_USUA_CREA = $inputs['FEC_USUA_CREA'];
-        $obj->DES_TERM_CREA = $inputs['DES_TERM_CREA'];
-        $obj->IDX_USUA_MODI = $inputs['IDX_USUA_MODI'];
-        $obj->FEC_USUA_MODI = $inputs['FEC_USUA_MODI'];
-        $obj->DES_TERM_MODI = $inputs['DES_TERM_MODI'];
-        $obj->BIT_ACTIVO = $inputs['BIT_ACTIVO'];
-
+        $obj->IDX_USUA_CREA = 405;
+        $obj->FEC_USUA_CREA = date('Y-m-d H:i:s');
+        $obj->DES_TERM_CREA = '';
+        $obj->IDX_USUA_MODI = 1;
+        $obj->FEC_USUA_MODI = date('Y-m-d H:i:s');
+        $obj->DES_TERM_MODI = '';
+        $obj->BIT_ACTIVO = 1;
         $obj->save();
-        return $obj->IDX_NAT;
+        return $obj->id; //retorna el id de la persona natural
     }
 }

@@ -94,12 +94,13 @@
 <style>
 	/* * { border:1px solid black; }*/
 </style>
-
+<form action="{{asset('/reclamo')}}" method="post">
+	
 <section class="content-header">
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<h2>
-				<img src="../images/sunedu-favicon.png" width="32" height="32"/> &nbsp;LIBRO DE RECLAMACIONES VIRTUAL SUNEDU
+				<img src="{{asset('/images/sunedu-favicon.png')}}" width="32" height="32"/> &nbsp;LIBRO DE RECLAMACIONES VIRTUAL SUNEDU
 			</h2>
 		</div>
 	</div>
@@ -145,7 +146,7 @@
 					<div class="tab-pane fade in active" id="tab_1">
 						<div class="row">
 							<div class="col-sm-12 col-md-12">
-								<button class="btn btn-info pull-right" type="button" onclick="denunciaOpenTab('tab_2')">
+								<button class="btn btn-info pull-right" type="button" onclick="denunciaOpenTab('tab_2')" id="siguiente">
 									Siguiente &nbsp;
 									<i class="fa  fa-arrow-right"></i>
 								</button>
@@ -166,13 +167,13 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<h4 class="panel-title">
-										<a class="collapsed" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+										<a class="collapsed" id="collapseNatural" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 											Si es Persona Natural
 										</a>
 									</h4>
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body">
+									<div class="panel-body" id="panelNatural">
 										<div class="row">
 											<div class="form-horizontal col-sm-12 col-md-6">
 												<div class="form-group col-sm-12 col-md-12">
@@ -181,7 +182,7 @@
 													<div class="col-sm-12 col-md-8">
 
 
-														<select class="form-control" id="cboIdxTipoDocuIdentidad">			
+														<select class="form-control" id="cboIdxTipoDocuIdentidad" name="IDX_TIPDOC">			
 																@foreach ($tipo_doc as $t)
     																<option value="{{ $t->IDX_TIPDOC }}">{{ $t->DES_TIPDOC }}</option>
 																@endforeach												
@@ -196,12 +197,12 @@
 															<input type="text"
 																   class="form-control"
 																   id="txtCodNumeDocumento"
-																   maxlength="8">
+																   maxlength="8" name="IDX_NUM_DOCU">
 															<input type="text" style="display: none;"
 																   class="form-control"
 																   id="hidIdxDenunciante"
 																   maxlength="8">
-															<span class="input-group-addon" style="cursor:pointer;" onclick="buscaPersonaDNI()"><i class="fa fa-search"></i></span>
+															<span class="input-group-addon" style="cursor:pointer;" id="buscarNatural"><i class="fa fa-search"></i></span>
 														</div>
 													</div>
 												</div>
@@ -211,7 +212,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuNombre"
-															   placeholder="">
+															   placeholder="" name="NOMBRE">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -220,7 +221,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuPaterno"
-															   placeholder="">
+															   placeholder="" name="APE_PAT">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -229,7 +230,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuMaterno"
-															   placeholder="">
+															   placeholder="" name="APE_MAT">
 													</div>
 												</div>
 											</div>
@@ -241,7 +242,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuEmail"
-															   placeholder="">
+															   placeholder="" name="EMAIL">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -250,7 +251,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuFijo"
-															   placeholder="">
+															   placeholder="" name="TEL_FIJO">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -259,7 +260,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuMovil"
-															   placeholder="">
+															   placeholder="" name="NUM_CELU">
 													</div>
 												</div>
 											</div>
@@ -268,7 +269,7 @@
 												<div class="form-group col-sm-12 col-md-12">
 													<label class="col-sm-12 col-md-3">Domicilio Real</label>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboDepPNR" >
+														<select class="form-control" id="cboDepPNR" name="" >
 																<option value="-1">Seleccione Dpto</option>
 																@foreach ($pais as $p)
     																<option value="{{ $p->COD_DEPA_CONTINENTE }}">{{ $p->DES_DEPA_CONTINENTE }}</option>
@@ -281,7 +282,7 @@
 														</select>
 													</div>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboDisPNR">
+														<select class="form-control" id="cboDisPNR" name="IDX_UBIGEO">
 															<?php //echo $this->selectUbigeoDis; ?>
 														</select>
 													</div>
@@ -320,7 +321,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuNotificacion"
-															   placeholder="">
+															   placeholder="" name="DOMICILIO">
 													</div>
 												</div>
 
@@ -334,13 +335,13 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingTwo">
 									<h4 class="panel-title">
-										<a class="collapsed" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										<a class="collapsed" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="collapseJuridica">
 											Si es Persona Juridica
 										</a>
 									</h4>
 								</div>
 								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">
+									<div class="panel-body" id="panelJuridica">
 										<div class="row">
 											<div class="form-horizontal col-sm-12 col-md-6">
 												<div class="form-group col-sm-12 col-md-12">
@@ -351,8 +352,8 @@
 															<input type="text"
 																   class="form-control text-uppercase"
 																   id="txtJuriRuc"
-																   maxlength="11">
-															<span class="input-group-addon" style="cursor:pointer;" onclick="buscaPersonaRUC()"><i class="fa fa-search"></i></span>
+																   maxlength="11" name="IDX_NUM_DOCU_RUC">
+															<span class="input-group-addon" style="cursor:pointer;" id="buscarJuridica"><i class="fa fa-search"></i></span>
 														</div>
 													</div>
 												</div>
@@ -362,7 +363,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriNombre"
-															   placeholder="">
+															   placeholder="" name="RAZ_SOCIAL">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12" hidden>
@@ -393,7 +394,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriEmail"
-															   placeholder="">
+															   placeholder="" name="EMAILJ">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -402,7 +403,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriTelefono"
-															   placeholder="">
+															   placeholder="" name="TELEFONOJ">
 													</div>
 												</div>
 											</div>
@@ -423,7 +424,7 @@
 														</select>
 													</div>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboDisPJR">
+														<select class="form-control" id="cboDisPJR" name="IDX_UBIGEOJ">
 															<?php //echo $this->selectUbigeoDis; ?>
 														</select>
 													</div>
@@ -433,7 +434,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriReal"
-															   placeholder="">
+															   placeholder="" name="DOMICILIOJ">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12" hidden>
@@ -479,7 +480,7 @@
 
 						<div class="row">
 							<div class="col-sm-12 col-md-12">
-								<button class="btn btn-success pull-right" style="margin-left:5px;" type="button" onclick="guardarDenuncia()" >
+								<button class="btn btn-success pull-right" style="margin-left:5px;" type="button" id="finalizar" >
 									Finalizar &nbsp;
 									<i class="fa fa-check"></i>
 								</button>
@@ -542,7 +543,7 @@
 										<input type="text"
 											   id="txtTxtDomiInstDenunciada"
 											   class="form-control text-uppercase"
-											   placeholder="">
+											   placeholder="" name="DOMICILIO">
 									</div>
 								</div>
 								<div class="form-group col-sm-12 col-md-6">
@@ -612,7 +613,7 @@
 							<div class="form-horizontal col-sm-12 col-md-12">
 								<div class="form-group col-sm-12 col-md-12">
 									<div class="col-sm-12 col-md-12">
-										<textarea class="form-control noresize" rows="4" id="txtTxtDescHechos" maxlength="500"></textarea>
+										<textarea class="form-control noresize" rows="4" id="txtTxtDescHechos" maxlength="500" name="DES_IDE_ATEN"></textarea>
 									</div>
 								</div>
 							</div>
@@ -628,7 +629,7 @@
 							<div class="form-horizontal col-sm-12 col-md-12">
 								<div class="form-group col-sm-12 col-md-12">
 									<div class="col-sm-12 col-md-12">
-										<textarea class="form-control noresize" rows="4" id="txtTxtPoteAfecHechos" maxlength="500"></textarea>
+										<textarea class="form-control noresize" rows="4" id="txtTxtPoteAfecHechos" maxlength="500" name="DES_ACC_ADOP"></textarea>
 									</div>
 								</div>
 							</div>
@@ -719,6 +720,7 @@
 		</div><!-- /.col -->
 	</div> <!-- /.row -->
 </section>
+</form>
 
 </body>
 </html>

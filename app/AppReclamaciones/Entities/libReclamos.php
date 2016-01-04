@@ -12,5 +12,4 @@ namespace AppReclamaciones\Entities;
 class libReclamos extends \Eloquent
 {
     protected $table = 'libReclamos';
-    protected $hidden = array('password', 'remember_token');
 }

@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: WebMaster
- * Date: 23/12/2015
- * Time: 5:56 PM
- */
-
 namespace AppReclamaciones\Repositories;
 
 

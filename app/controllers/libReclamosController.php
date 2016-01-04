@@ -21,4 +21,7 @@ class libReclamosController extends BaseController
     public function mostrarFormX(){
         return $this->libReclamosRepo->mostrarFormX();
     }
+    public function generarPDF($id){ 
+        return $this->libReclamosRepo->generarPDF($id);        
+    }
 }

@@ -45,13 +45,22 @@ function limpiarCampos(buscar,buscarSelect){
 	$('·cboIdxTipoDocuIdentidad').val(1);	
 }
 function actualizarCamposReclamo(tipoPersona){
+	var nombreCompleto,telefoMail,domicilio;
 	if(tipoPersona == 'N'){		
-		var nombreCompleto = $("#txtNatuNombre").val() + ' ' + $("#txtNatuPaterno").val() + ' ' + $("#txtNatuMaterno").val();
-		var telefoMail = $("#txtNatuFijo").val() + ' ' + $("#txtNatuEmail").val() + ' ' + $("#txtNatuMovil").val();
-		var domicilio = $()
-		$("#txtNomInstDenunciada").val(nombreCompleto);
-		$("#txtTelefonoEmail").val(telefoMail);	 
+		nombreCompleto = $("#txtNatuNombre").val() + ' ' + $("#txtNatuPaterno").val() + ' ' + $("#txtNatuMaterno").val();
+		telefoMail = $("#txtNatuFijo").val() + ' / ' + $("#txtNatuEmail").val() + ' / ' + $("#txtNatuMovil").val();
+		domicilio = $("#txtNatuReal").val();
+		numDoc = $("#txtCodNumeDocumento").val();
+	}else if(tipoPersona == 'J'){
+		nombreCompleto = $("#txtJuriNombre").val();
+		telefoMail = $("#txtJuriTelefono").val() + ' / ' + $('#txtJuriEmail').val();
+		domicilio = $("#txtJuriReal").val();		
+		numDoc = $("#txtJuriRuc").val();
 	}
+	$("#txtRucDNICE").val(numDoc);
+	$("#txtNomInstDenunciada").val(nombreCompleto);
+	$("#txtTelefonoEmail").val(telefoMail);
+	$("#txtTxtDomiInstDenunciada").val(domicilio);	 
 }
 function buscarPersonaNatural(){
 	limpiarCampos('#txtCodNumeDocumento','#cboIdxTipoDocuIdentidad');
@@ -98,7 +107,7 @@ function buscarPersonaNatural(){
 
 		//$("#cboDisPNR").val(dataE.COD_DIST_CIUDAD);
 
-		$("#cboIdxTipoDocuIdentidad").val(IDX_TIPDOC);
+		$("#cboIdxTipoDocuIdentidad").val(dataE.IDX_TIPDOC);
 	}
 	$el.buscarxDNI = function(){
 		var valor = $("#txtCodNumeDocumento").val();
@@ -201,6 +210,16 @@ $(document).on('ready',function(){
 		event.preventDefault();
 	});
 
+	$("#siguiente").on('click',function(){
+		var isNatural = $("#collapseNatural").attr('aria-expanded');
+		var isJuridica = $("#collapseJuridica").attr('aria-expanded');
+		if(isNatural == "true"){
+			actualizarCamposReclamo('N');
+		}else if(isJuridica == "true"){
+			actualizarCamposReclamo('J');
+		}		
+	});
+
 	$('#finalizar').on('click',function(event){
 		var url = $("form").attr('action');
 		var request = $.ajax({
@@ -211,7 +230,7 @@ $(document).on('ready',function(){
 		});
 		 
 		request.done(function( data ) {
-			console.log(data);
+			alert(data.mensaje);
 		});
 		 
 		request.fail(function( jqXHR, textStatus ) {
@@ -230,7 +249,7 @@ $(document).on('ready',function(){
 	});	
 
 	
-	$("#txtNatuNombre").on('keyup',function(){
+/*	$("#txtNatuNombre").on('keyup',function(){
 		actualizarCamposReclamo('N');
 	});
 	$("#txtNatuPaterno").on('keyup',function(){
@@ -247,7 +266,8 @@ $(document).on('ready',function(){
 	});
 	$("#txtNatuMovil").on('keyup',function(){
 		actualizarCamposReclamo('N');
-	});						
+	});*/
+
 
 
 	$('#cboDepPNR').on('change',function(){

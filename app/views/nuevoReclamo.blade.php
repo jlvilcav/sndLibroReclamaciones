@@ -100,7 +100,7 @@
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<h2>
-				<img src="../images/sunedu-favicon.png" width="32" height="32"/> &nbsp;LIBRO DE RECLAMACIONES VIRTUAL SUNEDU
+				<img src="{{asset('/images/sunedu-favicon.png')}}" width="32" height="32"/> &nbsp;LIBRO DE RECLAMACIONES VIRTUAL SUNEDU
 			</h2>
 		</div>
 	</div>
@@ -146,7 +146,7 @@
 					<div class="tab-pane fade in active" id="tab_1">
 						<div class="row">
 							<div class="col-sm-12 col-md-12">
-								<button class="btn btn-info pull-right" type="button" onclick="denunciaOpenTab('tab_2')">
+								<button class="btn btn-info pull-right" type="button" onclick="denunciaOpenTab('tab_2')" id="siguiente">
 									Siguiente &nbsp;
 									<i class="fa  fa-arrow-right"></i>
 								</button>
@@ -167,7 +167,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<h4 class="panel-title">
-										<a class="collapsed" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+										<a class="collapsed" id="collapseNatural" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 											Si es Persona Natural
 										</a>
 									</h4>
@@ -335,7 +335,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingTwo">
 									<h4 class="panel-title">
-										<a class="collapsed" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										<a class="collapsed" role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="collapseJuridica">
 											Si es Persona Juridica
 										</a>
 									</h4>
@@ -352,7 +352,7 @@
 															<input type="text"
 																   class="form-control text-uppercase"
 																   id="txtJuriRuc"
-																   maxlength="11">
+																   maxlength="11" name="IDX_NUM_DOCU_RUC">
 															<span class="input-group-addon" style="cursor:pointer;" id="buscarJuridica"><i class="fa fa-search"></i></span>
 														</div>
 													</div>
@@ -363,7 +363,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriNombre"
-															   placeholder="">
+															   placeholder="" name="RAZ_SOCIAL">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12" hidden>
@@ -394,7 +394,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriEmail"
-															   placeholder="">
+															   placeholder="" name="EMAILJ">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -403,7 +403,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriTelefono"
-															   placeholder="">
+															   placeholder="" name="TELEFONOJ">
 													</div>
 												</div>
 											</div>
@@ -424,7 +424,7 @@
 														</select>
 													</div>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboDisPJR">
+														<select class="form-control" id="cboDisPJR" name="IDX_UBIGEOJ">
 															<?php //echo $this->selectUbigeoDis; ?>
 														</select>
 													</div>
@@ -434,7 +434,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtJuriReal"
-															   placeholder="">
+															   placeholder="" name="DOMICILIOJ">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12" hidden>

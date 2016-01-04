@@ -94,7 +94,8 @@
 <style>
 	/* * { border:1px solid black; }*/
 </style>
-
+<form action="{{asset('/reclamo')}}" method="post">
+	
 <section class="content-header">
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
@@ -181,7 +182,7 @@
 													<div class="col-sm-12 col-md-8">
 
 
-														<select class="form-control" id="cboIdxTipoDocuIdentidad">			
+														<select class="form-control" id="cboIdxTipoDocuIdentidad" name="IDX_TIPDOC">			
 																@foreach ($tipo_doc as $t)
     																<option value="{{ $t->IDX_TIPDOC }}">{{ $t->DES_TIPDOC }}</option>
 																@endforeach												
@@ -196,7 +197,7 @@
 															<input type="text"
 																   class="form-control"
 																   id="txtCodNumeDocumento"
-																   maxlength="8">
+																   maxlength="8" name="IDX_NUM_DOCU">
 															<input type="text" style="display: none;"
 																   class="form-control"
 																   id="hidIdxDenunciante"
@@ -211,7 +212,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuNombre"
-															   placeholder="">
+															   placeholder="" name="NOMBRE">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -220,7 +221,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuPaterno"
-															   placeholder="">
+															   placeholder="" name="APE_PAT">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -229,7 +230,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuMaterno"
-															   placeholder="">
+															   placeholder="" name="APE_MAT">
 													</div>
 												</div>
 											</div>
@@ -241,7 +242,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuEmail"
-															   placeholder="">
+															   placeholder="" name="EMAIL">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -250,7 +251,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuFijo"
-															   placeholder="">
+															   placeholder="" name="TEL_FIJO">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -259,7 +260,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuMovil"
-															   placeholder="">
+															   placeholder="" name="NUM_CELU">
 													</div>
 												</div>
 											</div>
@@ -268,7 +269,7 @@
 												<div class="form-group col-sm-12 col-md-12">
 													<label class="col-sm-12 col-md-3">Domicilio Real</label>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboDepPNR" >
+														<select class="form-control" id="cboDepPNR" name="" >
 																<option value="-1">Seleccione Dpto</option>
 																@foreach ($pais as $p)
     																<option value="{{ $p->COD_DEPA_CONTINENTE }}">{{ $p->DES_DEPA_CONTINENTE }}</option>
@@ -281,7 +282,7 @@
 														</select>
 													</div>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboDisPNR">
+														<select class="form-control" id="cboDisPNR" name="IDX_UBIGEO">
 															<?php //echo $this->selectUbigeoDis; ?>
 														</select>
 													</div>
@@ -320,7 +321,7 @@
 														<input type="text"
 															   class="form-control text-uppercase"
 															   id="txtNatuNotificacion"
-															   placeholder="">
+															   placeholder="" name="DOMICILIO">
 													</div>
 												</div>
 
@@ -479,7 +480,7 @@
 
 						<div class="row">
 							<div class="col-sm-12 col-md-12">
-								<button class="btn btn-success pull-right" style="margin-left:5px;" type="button" onclick="guardarDenuncia()" >
+								<button class="btn btn-success pull-right" style="margin-left:5px;" type="button" id="finalizar" >
 									Finalizar &nbsp;
 									<i class="fa fa-check"></i>
 								</button>
@@ -542,7 +543,7 @@
 										<input type="text"
 											   id="txtTxtDomiInstDenunciada"
 											   class="form-control text-uppercase"
-											   placeholder="">
+											   placeholder="" name="DOMICILIO">
 									</div>
 								</div>
 								<div class="form-group col-sm-12 col-md-6">
@@ -612,7 +613,7 @@
 							<div class="form-horizontal col-sm-12 col-md-12">
 								<div class="form-group col-sm-12 col-md-12">
 									<div class="col-sm-12 col-md-12">
-										<textarea class="form-control noresize" rows="4" id="txtTxtDescHechos" maxlength="500"></textarea>
+										<textarea class="form-control noresize" rows="4" id="txtTxtDescHechos" maxlength="500" name="DES_IDE_ATEN"></textarea>
 									</div>
 								</div>
 							</div>
@@ -628,7 +629,7 @@
 							<div class="form-horizontal col-sm-12 col-md-12">
 								<div class="form-group col-sm-12 col-md-12">
 									<div class="col-sm-12 col-md-12">
-										<textarea class="form-control noresize" rows="4" id="txtTxtPoteAfecHechos" maxlength="500"></textarea>
+										<textarea class="form-control noresize" rows="4" id="txtTxtPoteAfecHechos" maxlength="500" name="DES_ACC_ADOP"></textarea>
 									</div>
 								</div>
 							</div>
@@ -719,6 +720,7 @@
 		</div><!-- /.col -->
 	</div> <!-- /.row -->
 </section>
+</form>
 
 </body>
 </html>

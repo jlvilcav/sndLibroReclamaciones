@@ -15,6 +15,7 @@
 Route::get('/', array('uses' => 'libReclamosController@mostrarFormX'));
 
 Route::get('/tipDocumento',array('uses' => 'tipDocuController@listaCombo') );
+Route::post('/reclamo',array('uses' => 'libReclamosController@add') );
 
 
 

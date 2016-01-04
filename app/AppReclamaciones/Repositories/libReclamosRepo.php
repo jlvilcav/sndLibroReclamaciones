@@ -10,6 +10,8 @@ namespace AppReclamaciones\Repositories;
 use AppReclamaciones\Entities\libReclamos;
 use AppReclamaciones\Repositories\ubigeosRepo;
 use AppReclamaciones\Repositories\tipDocumentoRepo;
+use AppReclamaciones\Repositories\perNaturalRepo;
+use AppReclamaciones\Repositories\perJuridicaRepo;
 
 class libReclamosRepo extends BaseRepo
 {
@@ -24,28 +26,35 @@ class libReclamosRepo extends BaseRepo
     }
     public function add(){
         $inputs = $this->getInputs();
-        //return dd($inputs);
-        $obj = new perNatural;
-        $obj->IDX_NUM_DOCU = $inputs['IDX_NUM_DOCU'];
-        $obj->NOMBRE = $inputs['NOMBRE'];
-        $obj->APE_PAT = $inputs['APE_PAT'];
-        $obj->APE_MAT = $inputs['APE_MAT'];
-        $obj->IDX_UBIGEO = $inputs['IDX_UBIGEO'];
-        $obj->IDX_TIPDOC = $inputs['IDX_TIPDOC'];
-        $obj->DOMICILIO = $inputs['DOMICILIO'];
-        $obj->EMAIL = $inputs['EMAIL'];
-        $obj->TEL_FIJO = $inputs['TEL_FIJO'];
-        $obj->NUM_CELU = $inputs['NUM_CELU'];
-        $obj->IDX_USUA_CREA = $inputs['IDX_USUA_CREA'];
-        $obj->FEC_USUA_CREA = $inputs['FEC_USUA_CREA'];
-        $obj->DES_TERM_CREA = $inputs['DES_TERM_CREA'];
-        $obj->IDX_USUA_MODI = $inputs['IDX_USUA_MODI'];
-        $obj->FEC_USUA_MODI = $inputs['FEC_USUA_MODI'];
-        $obj->DES_TERM_MODI = $inputs['DES_TERM_MODI'];
-        $obj->BIT_ACTIVO = $inputs['BIT_ACTIVO'];
+        $persona = new perNaturalRepo;
+        $idPersona = $persona->add($inputs);
+        $inputs['idPersona'] = $idPersona;
+        //dd($idPersona);
+        return $this->addReclamo($inputs);
+    }
+    public function addReclamo($inputs){
+        $objReclamo = new libReclamos;
+        $objReclamo->IDX_NUM_DOCU_NAT = $inputs['idPersona'];
+        $objReclamo->FLAG_PERSONA = 'N';
+        $objReclamo->DES_IDE_ATEN = $inputs['DES_IDE_ATEN'];
+        $objReclamo->DES_ACC_ADOP = $inputs['DES_ACC_ADOP'];
+        $objReclamo->IDX_USUA_CREA = 405;
+        $objReclamo->FEC_USUA_CREA = date('Y-m-d H:i:s');
+        $objReclamo->DES_TERM_CREA = '';
+        $objReclamo->IDX_USUA_MODI = 1;
+        $objReclamo->FEC_USUA_MODI = date('Y-m-d H:i:s');
+        $objReclamo->DES_TERM_MODI = '';
+        $objReclamo->BIT_ACTIVO = 1;
+        $objReclamo->save();
+        $idReclamo = $objReclamo->id;
 
-        $obj->save();
-        return $obj->IDX_NAT;
+
+
+        $numReclamo = str_pad($objReclamo->id,5,'0',STR_PAD_LEFT).'-'.date('Y').'-RV';
+        \DB::table('libreclamos')->where('IDX_LIB_REC',$idReclamo)
+                                 ->update(array('NUM_RECLAM' => $numReclamo));
+
+        return $numReclamo;
     }
     public function mostrarFormX(){
         $objTipDoc = new tipDocumentoRepo;
@@ -56,9 +65,6 @@ class libReclamosRepo extends BaseRepo
             'pais' => $objPais->listaDepa(),
             //'provincia' => $objProv -> listaProv()
         );
-
-
-
         return \View::make('nuevoReclamo',$data);
     }
 }

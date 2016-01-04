@@ -31,21 +31,36 @@ function getDataSelect(url,classControl,textoSeleccion,campoValor, campoTexto){
 
 	return $el;      
 }
-function limpiarCampos(){
-	$("body input[type='text']").val('');
+function limpiarCampos(buscar,buscarSelect){
+	$("body input[type='text']").not(buscar).val('');
 	$("#cboProPNR").empty();
 	$("#cboDisPNR").empty();
 	$("#cboProPJR").empty();
-	$("#cboDisPJR").empty();	
-	$("body select").val(-1);
+	$("#cboDisPJR").empty();
+	if(buscarSelect){
+		$("body select").not(buscarSelect).val(-1);
+	}else{
+		$("body select").val(-1);		
+	}
+	$('·cboIdxTipoDocuIdentidad').val(1);	
+}
+function actualizarCamposReclamo(tipoPersona){
+	if(tipoPersona == 'N'){		
+		var nombreCompleto = $("#txtNatuNombre").val() + ' ' + $("#txtNatuPaterno").val() + ' ' + $("#txtNatuMaterno").val();
+		var telefoMail = $("#txtNatuFijo").val() + ' ' + $("#txtNatuEmail").val() + ' ' + $("#txtNatuMovil").val();
+		var domicilio = $()
+		$("#txtNomInstDenunciada").val(nombreCompleto);
+		$("#txtTelefonoEmail").val(telefoMail);	 
+	}
 }
 function buscarPersonaNatural(){
-	limpiarCampos();
+	limpiarCampos('#txtCodNumeDocumento','#cboIdxTipoDocuIdentidad');
 	var $el = $("<div>");
 	$el.url = urlBase + 'pernatural/busca/';
 	
 	$el.on('noseEncontro',function(){
 		alert('el documento ingresado no se encuentra registrado');
+		$('#txtNatuNombre').focus();
 	});
 
 
@@ -114,7 +129,7 @@ function buscarPersonaNatural(){
 	return $el;
 }
 function buscarPersonaJuridica(){
-	limpiarCampos();
+	limpiarCampos('#txtJuriRuc');
 	var $el = $("<div>");
 	$el.url = urlBase + 'perjuridica/busca/';
 	
@@ -182,6 +197,29 @@ function buscarPersonaJuridica(){
 
 
 $(document).on('ready',function(){
+	$("form").on('submit',function(event){
+		event.preventDefault();
+	});
+
+	$('#finalizar').on('click',function(event){
+		var url = $("form").attr('action');
+		var request = $.ajax({
+		  url: url,
+		  data: $("form").serialize(),
+		  method: "POST",
+		  dataType: "json"
+		});
+		 
+		request.done(function( data ) {
+			console.log(data);
+		});
+		 
+		request.fail(function( jqXHR, textStatus ) {
+		  console.log( "Request failed: " + textStatus );
+		});
+
+	});
+
 	$("#buscarNatural").on('click',function(){
 		var buscar = new buscarPersonaNatural();
 		buscar.buscarxDNI();
@@ -190,6 +228,27 @@ $(document).on('ready',function(){
 		var buscar = new buscarPersonaJuridica();
 		buscar.buscarxDoc();
 	});	
+
+	
+	$("#txtNatuNombre").on('keyup',function(){
+		actualizarCamposReclamo('N');
+	});
+	$("#txtNatuPaterno").on('keyup',function(){
+		actualizarCamposReclamo('N');
+	});
+	$("#txtNatuMaterno").on('keyup',function(){
+		actualizarCamposReclamo('N');
+	});	
+	$("#txtNatuEmail").on('keyup',function(){
+		actualizarCamposReclamo('N');
+	});
+	$("#txtNatuFijo").on('keyup',function(){
+		actualizarCamposReclamo('N');
+	});
+	$("#txtNatuMovil").on('keyup',function(){
+		actualizarCamposReclamo('N');
+	});						
+
 
 	$('#cboDepPNR').on('change',function(){
 		var id = $(this).val();

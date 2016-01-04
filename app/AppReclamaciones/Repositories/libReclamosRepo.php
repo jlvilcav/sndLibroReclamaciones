@@ -55,7 +55,7 @@ class libReclamosRepo extends BaseRepo
         }else{
             $objReclamo->IDX_NUM_DOCU_JUR = $inputs['idPersona'];
         }
-        $objReclamo->FLAG_PERSONA = 'N';
+        $objReclamo->FLAG_PERSONA = $inputs['flagPersona'];
         $objReclamo->DES_IDE_ATEN = $inputs['DES_IDE_ATEN'];
         $objReclamo->DES_ACC_ADOP = $inputs['DES_ACC_ADOP'];
         $objReclamo->IDX_USUA_CREA = 405;
@@ -74,7 +74,17 @@ class libReclamosRepo extends BaseRepo
                 'mensaje' => 'Su reclamo ha sido generado: '.$numReclamo,
                 'estado' => true
             );
-            return $arResult;
+            if($inputs['flagPersona']){ 
+                $this->sendEmail = $inputs['EMAIL'];
+                $this->rutaPDF = asset('/pdf/'.$idReclamo.'/x.pdf');
+                $data = array();                
+                \Mail::send('emails.reclamo.parrafo', $data, function($message)
+                {
+                    $message->to($this->sendEmail, 'SUNEDU')->subject('SUNEDU - Formulario de Reclamación');
+                    $message->attach($this->rutaPDF);
+                });
+            }
+            return $this->rutaPDF;
         }else{
             $arResult = array(
                 'mensaje' => 'Hubo un problema por favor vuelva a intentarlo',
@@ -84,14 +94,40 @@ class libReclamosRepo extends BaseRepo
         }
 
     }
+    public function generarPDF($id){
+        $objReclamo = \DB::table('libreclamos')->where('IDX_LIB_REC','=',$id)->first();
+        //dd($objReclamo);
+        if($objReclamo->FLAG_PERSONA == 'N'){
+            $personaBuscar = \DB::table('pernatural')->where('IDX_NAT',$objReclamo->IDX_NUM_DOCU_NAT)->first();
+            $nombreCompleto = $personaBuscar->NOMBRE.' '.$personaBuscar->APE_PAT.' '.$personaBuscar->APE_MAT;
+            $domicilio = $personaBuscar->DOMICILIO;
+            $nro_doc = $personaBuscar->IDX_NUM_DOCU;
+            $telf_email = $personaBuscar->TEL_FIJO.' / '.$personaBuscar->NUM_CELU.' / '.$personaBuscar->EMAIL;
+        }else{            
+            $personaBuscar = \DB::table('perjuridica')->where('IDX_JUR',$objReclamo->IDX_NUM_DOCU_JUR)->first();       
+            $nombreCompleto = $personaBuscar->RAZ_SOCIAL;
+            $domicilio = $personaBuscar->DOMICILIO;
+            $nro_doc = $personaBuscar->IDX_NUM_DOCU;
+            $telf_email = $personaBuscar->TEL_FIJO.' / '.$personaBuscar->EMAIL;
+        }
+        $data = array(
+            'fecha' => $objReclamo->FEC_USUA_CREA,
+            'nro_reclamo' => $objReclamo->NUM_RECLAM,
+            'nombre' => $nombreCompleto,
+            'domicilio' => $domicilio,
+            'num_doc' => $nro_doc,
+            'telf_email' => $telf_email,
+            'atencion_brindada' => $objReclamo->DES_IDE_ATEN
+        );  
+        $pdf = \PDF::loadView('emails.reclamo.pdfGenerado', $data);
+        return $pdf->stream('Reclamacion.pdf');    
+    }
     public function mostrarFormX(){
         $objTipDoc = new tipDocumentoRepo;
         $objPais = new ubigeosRepo;
-        //$objProv = new ubigeosRepo;
         $data = array(
             'tipo_doc' => $objTipDoc->listaCombo(),
             'pais' => $objPais->listaDepa(),
-            //'provincia' => $objProv -> listaProv()
         );
         return \View::make('nuevoReclamo',$data);
     }

@@ -11,7 +11,8 @@
 |
 */
 
-//Route::get('/',array('uses' => 'libReclamosController@mostrarForm') );
+Route::get('pdf/{id}/x.pdf',array('uses' => 'libReclamosController@generarPDF'));
+
 Route::get('/', array('uses' => 'libReclamosController@mostrarFormX'));
 
 Route::get('/tipDocumento',array('uses' => 'tipDocuController@listaCombo') );

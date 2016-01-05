@@ -206,9 +206,10 @@ function buscarPersonaJuridica(){
 
 
 $(document).on('ready',function(){
-	$("form").on('submit',function(event){
+	$("#formulario").on('submit',function(event){
 		event.preventDefault();
 	});
+
 
 	$("#siguiente").on('click',function(){
 		var isNatural = $("#collapseNatural").attr('aria-expanded');
@@ -221,7 +222,18 @@ $(document).on('ready',function(){
 	});
 
 	$('#finalizar').on('click',function(event){
-		var url = $("form").attr('action');
+
+		$("#formulario").validate({
+			rules:{
+				"IDX_NUM_DOCU" : {
+					required: true,
+					minlength: 8
+				}
+			}
+		});
+		
+		$('#formulario').trigger('submit');
+/*		var url = $("form").attr('action');
 		var request = $.ajax({
 		  url: url,
 		  data: $("form").serialize(),
@@ -235,7 +247,7 @@ $(document).on('ready',function(){
 		 
 		request.fail(function( jqXHR, textStatus ) {
 		  console.log( "Request failed: " + textStatus );
-		});
+		});*/
 
 	});
 
@@ -247,26 +259,6 @@ $(document).on('ready',function(){
 		var buscar = new buscarPersonaJuridica();
 		buscar.buscarxDoc();
 	});	
-
-	
-/*	$("#txtNatuNombre").on('keyup',function(){
-		actualizarCamposReclamo('N');
-	});
-	$("#txtNatuPaterno").on('keyup',function(){
-		actualizarCamposReclamo('N');
-	});
-	$("#txtNatuMaterno").on('keyup',function(){
-		actualizarCamposReclamo('N');
-	});	
-	$("#txtNatuEmail").on('keyup',function(){
-		actualizarCamposReclamo('N');
-	});
-	$("#txtNatuFijo").on('keyup',function(){
-		actualizarCamposReclamo('N');
-	});
-	$("#txtNatuMovil").on('keyup',function(){
-		actualizarCamposReclamo('N');
-	});*/
 
 
 

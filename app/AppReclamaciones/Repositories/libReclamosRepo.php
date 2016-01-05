@@ -80,11 +80,13 @@ class libReclamosRepo extends BaseRepo
                 $data = array();                
                 \Mail::send('emails.reclamo.parrafo', $data, function($message)
                 {
-                    $message->to($this->sendEmail, 'SUNEDU')->subject('SUNEDU - Formulario de Reclamación');
+                    $message->to($this->sendEmail, 'SUNEDU')
+                                        ->cc('webmaster@sunedu.gob.pe')
+                                        ->subject('SUNEDU - Formulario de Reclamación');
                     $message->attach($this->rutaPDF);
                 });
             }
-            return $this->rutaPDF;
+            return $arResult;
         }else{
             $arResult = array(
                 'mensaje' => 'Hubo un problema por favor vuelva a intentarlo',

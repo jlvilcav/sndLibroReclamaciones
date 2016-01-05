@@ -5,54 +5,54 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="shortcut icon" href="../images/sunedu-favicon.png">
-	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/select2/select2.min.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/dist/css/AdminLTE.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/dist/css/skins/skin-sunedu.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/morris/morris.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css">
-	<link href="../bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/datatables/dataTables.bootstrap.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/select2/select2.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/dist/css/AdminLTE.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/dist/css/skins/skin-sunedu.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/iCheck/flat/blue.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/morris/morris.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/datepicker/datepicker3.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css">
 
-	<script src="../bootstrap/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script src="../bootstrap/plugins/jQueryUI/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+	<script src="{{asset('bootstrap/plugins/jQueryUI/jquery-ui.min.js')}}" type="text/javascript"></script>
 	<script type="text/javascript">
 		$.widget.bridge('uibutton', $.ui.button);
 	</script>
-	<script src="{{asset('../bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/datatables/dataTables.bootstrap.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datatables/dataTables.bootstrap.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js')}}" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="{{asset('../bootstrap/plugins/morris/morris.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/sparkline/jquery.sparkline.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/knob/jquery.knob.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/input-mask/jquery.inputmask.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/input-mask/jquery.inputmask.date.extensions.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/input-mask/jquery.inputmask.extensions.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/daterangepicker/moment.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/datepicker/bootstrap-datepicker.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/plugins/fastclick/fastclick.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
-	<script src="{{asset('../bootstrap/Scripts/reclamosLibro.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/morris/morris.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/sparkline/jquery.sparkline.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/knob/jquery.knob.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.date.extensions.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.extensions.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/daterangepicker/moment.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datepicker/bootstrap-datepicker.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/fastclick/fastclick.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/Scripts/reclamosLibro.js')}}" type="text/javascript"></script>
 	<script>
 		var sunePath = 'http://localhost/';
 	</script>
-	<script src="../bootstrap/Scripts/Common.js" type="text/javascript"></script>
-	<script src="../bootstrap/Scripts/licenciamiento.js" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/Scripts/Common.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/Scripts/licenciamiento.js')}}" type="text/javascript"></script>
 	<script>
 		(function($) {
 			$.fn.goTo = function() {
@@ -67,13 +67,10 @@
 	<script>
 		$(document).ready(function(){
 			$(document).ajaxStart(function(){
-				//$('#layout_wrapper').addClass('disabled-content');
 				$('#liLoading').show();
 			});
 			$(document).ajaxStop(function(){
-				//$('#layout_wrapper').removeClass('disabled-content');
 				$('#liLoading').hide();
-
 			});
 		});
 	</script>
@@ -94,7 +91,7 @@
 <style>
 	/* * { border:1px solid black; }*/
 </style>
-<form action="{{asset('/reclamo')}}" method="post">
+<form action="{{asset('/reclamo')}}" method="post" id="formulario">
 	
 <section class="content-header">
 	<div class="row">
@@ -201,7 +198,7 @@
 															<input type="text" style="display: none;"
 																   class="form-control"
 																   id="hidIdxDenunciante"
-																   maxlength="8">
+																   maxlength="8" required>
 															<span class="input-group-addon" style="cursor:pointer;" id="buscarNatural"><i class="fa fa-search"></i></span>
 														</div>
 													</div>

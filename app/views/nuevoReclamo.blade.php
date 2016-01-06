@@ -50,6 +50,7 @@
 	<script src="{{asset('bootstrap/Scripts/reclamosLibro.js')}}" type="text/javascript"></script>
 	<script>
 		var sunePath = 'http://localhost/';
+		//var sunePath = 'http://www.sunedu.gob.pe/LibroReclamacion/';
 	</script>
 	<script src="{{asset('bootstrap/Scripts/Common.js')}}" type="text/javascript"></script>
 	<script src="{{asset('bootstrap/Scripts/licenciamiento.js')}}" type="text/javascript"></script>

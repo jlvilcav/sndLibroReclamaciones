@@ -27,6 +27,7 @@ return array(
 	*/
 
 	'url' => 'http://localhost',
+	//'url' => 'http://www.sunedu.gob.pe/LibroReclamacion/',
 
 	/*
 	|--------------------------------------------------------------------------

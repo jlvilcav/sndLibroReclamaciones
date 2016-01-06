@@ -22,7 +22,7 @@ Route::post('/reclamo',array('uses' => 'libReclamosController@add') );
 
 Route::get('/ubigeos',array('uses' => 'ubigeosController@index'));
 Route::get('/ubigeos/prov/{id}',array('uses' => 'ubigeosController@listaProv'));
-Route::get('/ubigeos/dis/{id}',array('uses' => 'ubigeosController@listaDist'));
+Route::get('/ubigeos/dis/{id}/{id2}',array('uses' => 'ubigeosController@listaDist'));
 Route::get('/pernatural/busca/{dni}', array('uses' => 'perNaturalController@findByDni'));
 Route::get('/perjuridica/busca/{ruc}', array('uses' => 'perJuridicaController@findByRuc'));
 

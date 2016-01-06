@@ -45,13 +45,14 @@ class ubigeosRepo extends BaseRepo
                                 
         return  $ubiPais;
     }
-    public function listaDist($id){
+    public function listaDist($id, $id2){
         $obUbiPais = new ubigeosRepo;
         $ubiPais = \DB::table('ubigeos')
                                 ->select('COD_DIST_CIUDAD','DES_DIST_CIUDAD')
                                 ->distinct()
                                 ->where('BIT_ACTIVO', '=', 1)
-                                ->where('COD_PROV_PAIS', '=', $id )                                
+                                ->where('COD_PROV_PAIS', '=', $id )    
+                                ->where('COD_DEPA_CONTINENTE', '=', $id2 )                             
                                 ->get();
                                 
         return  $ubiPais;

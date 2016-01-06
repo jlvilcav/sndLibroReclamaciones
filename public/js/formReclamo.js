@@ -283,7 +283,8 @@ $(document).on('ready',function(){
 	});
 	$('#cboProPNR').on('change',function(){
 		var id = $(this).val();
-		var url = urlBase + 'ubigeos/dis/' + id;
+		var id2 = $('#cboDepPNR').val();
+		var url = urlBase + 'ubigeos/dis/' + id +'/' + id2;
 		if(Number(id) > 0){
 			$("#cboDisPNR").empty();			
 			var datos = getDataSelect(url,'#cboDisPNR','Seleccione Distrito','COD_DIST_CIUDAD','DES_DIST_CIUDAD');
@@ -295,7 +296,7 @@ $(document).on('ready',function(){
 	});
 
 	$('#cboDepPJR').on('change',function(){
-		var id = $(this).val();
+		var id = $(this).val();		
 		var url = urlBase + 'ubigeos/prov/' + id;
 		if(Number(id) > 0){
 		$("#cboProPJR").empty();
@@ -310,7 +311,8 @@ $(document).on('ready',function(){
 
 	$('#cboProPJR').on('change',function(){
 		var id = $(this).val();
-		var url = urlBase + 'ubigeos/dis/' + id;
+		var id2 = $('#cboDepPJR').val();
+		var url = urlBase + 'ubigeos/dis/' + id + '/' + id2;
 		if(Number(id) > 0){
 			$("#cboDisPJR").empty();
 			var datos = getDataSelect(url,'#cboDisPJR','Seleccione Distrito','COD_DIST_CIUDAD','DES_DIST_CIUDAD');

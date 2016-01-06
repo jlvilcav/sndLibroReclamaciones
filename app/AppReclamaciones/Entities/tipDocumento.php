@@ -11,6 +11,6 @@ namespace AppReclamaciones\Entities;
 
 class tipDocumento extends \Eloquent
 {
-    protected $table = 'tipDocumento';
+    protected $table = 'tipdocumento';
     protected $hidden = array('password', 'remember_token');
 }

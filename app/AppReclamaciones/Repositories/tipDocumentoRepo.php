@@ -22,7 +22,7 @@ class tipDocumentoRepo extends BaseRepo
     }
     public function listaCombo(){
     	$obTipDoc = new tipDocumentoRepo;
-    	$tipDocList = \DB::table('tipDocumento')
+    	$tipDocList = \DB::table('tipdocumento')
     							->select('IDX_TIPDOC','DES_TIPDOC')
     							->where('BIT_ACTIVO', '=', 1)
     							->get();

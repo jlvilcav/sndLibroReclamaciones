@@ -31,7 +31,7 @@ class CreatePerJuridicaTable extends Migration {
 			$table->char("BIT_ACTIVO",1);
 			$table->foreign('IDX_USUA_CREA')->references('IDX_PERSONA')->on('usuario');
 			$table->foreign('IDX_USUA_MODI')->references('IDX_PERSONA')->on('usuario');
-			$table->foreign('IDX_TIPDOC')->references('IDX_TIPDOC')->on('tipDocumento');
+			$table->foreign('IDX_TIPDOC')->references('IDX_TIPDOC')->on('tipdocumento');
 			$table->foreign('IDX_UBIGEO')->references('IDX_UBIGEO')->on('ubigeos');
 		});
 	}

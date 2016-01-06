@@ -12,7 +12,7 @@ class CreateTipDocumentoTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tipDocumento', function(Blueprint $table)
+		Schema::create('tipdocumento', function(Blueprint $table)
 		{
 			$table->bigIncrements('IDX_TIPDOC');
 			$table->string("DES_TIPDOC",50);
@@ -37,7 +37,7 @@ class CreateTipDocumentoTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tipDocumento');
+		Schema::drop('tipdocumento');
 	}
 
 }

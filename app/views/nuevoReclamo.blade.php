@@ -194,7 +194,7 @@
 															<input type="text"
 																   class="form-control"
 																   id="txtCodNumeDocumento"
-																   maxlength="8" name="IDX_NUM_DOCU">
+																   maxlength="8" name="IDX_NUM_DOCU" onblur="validaTamanio('DN');">
 															<input type="text" style="display: none;"
 																   class="form-control"
 																   id="hidIdxDenunciante"
@@ -208,8 +208,8 @@
 													<div class="col-sm-12 col-md-8">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtNatuNombre"
-															   placeholder="" name="NOMBRE">
+															   id="txtNatuNombre" maxlength="120" 
+															   placeholder="" name="NOMBRE" onblur="validaTamanio('NN');">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -217,7 +217,7 @@
 													<div class="col-sm-12 col-md-8">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtNatuPaterno"
+															   id="txtNatuPaterno" maxlength="60" 
 															   placeholder="" name="APE_PAT">
 													</div>
 												</div>
@@ -226,7 +226,7 @@
 													<div class="col-sm-12 col-md-8">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtNatuMaterno"
+															   id="txtNatuMaterno" maxlength="60" 
 															   placeholder="" name="APE_MAT">
 													</div>
 												</div>
@@ -238,8 +238,8 @@
 													<div class="col-sm-12 col-md-7">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtNatuEmail"
-															   placeholder="" name="EMAIL">
+															   id="txtNatuEmail" maxlength="120" 
+															   placeholder="" name="EMAIL" onblur="validarEmail('N');">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -247,7 +247,7 @@
 													<div class="col-sm-12 col-md-7">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtNatuFijo"
+															   id="txtNatuFijo" maxlength="100" 
 															   placeholder="" name="TEL_FIJO">
 													</div>
 												</div>
@@ -256,7 +256,7 @@
 													<div class="col-sm-12 col-md-7">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtNatuMovil"
+															   id="txtNatuMovil" maxlength="100" 
 															   placeholder="" name="NUM_CELU">
 													</div>
 												</div>
@@ -288,7 +288,7 @@
 													<div class="col-sm-12 col-md-12">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtNatuReal"
+															   id="txtNatuReal" maxlength="200" 
 															   placeholder="">
 													</div>
 												</div>
@@ -359,7 +359,7 @@
 													<div class="col-sm-12 col-md-8">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtJuriNombre"
+															   id="txtJuriNombre" maxlength="200" 
 															   placeholder="" name="RAZ_SOCIAL">
 													</div>
 												</div>
@@ -368,7 +368,7 @@
 													<div class="col-sm-12 col-md-8">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtDesPartSunarp"
+															   id="txtDesPartSunarp" maxlength="100" 
 															   placeholder="">
 													</div>
 												</div>
@@ -390,8 +390,8 @@
 													<div class="col-sm-12 col-md-8">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtJuriEmail"
-															   placeholder="" name="EMAILJ">
+															   id="txtJuriEmail" maxlength="120" 
+															   placeholder="" name="EMAILJ" onblur="validarEmail('J');">
 													</div>
 												</div>
 												<div class="form-group col-sm-12 col-md-12">
@@ -399,7 +399,7 @@
 													<div class="col-sm-12 col-md-8">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtJuriTelefono"
+															   id="txtJuriTelefono" maxlength="100" 
 															   placeholder="" name="TELEFONOJ">
 													</div>
 												</div>
@@ -416,7 +416,7 @@
 														</select>
 													</div>
 													<div class="col-sm-12 col-md-3">
-														<select class="form-control" id="cboProPJR" ">
+														<select class="form-control" id="cboProPJR" >
 															<?php //echo $this->selectUbigeoPro; ?>
 														</select>
 													</div>
@@ -430,7 +430,7 @@
 													<div class="col-sm-12 col-md-12">
 														<input type="text"
 															   class="form-control text-uppercase"
-															   id="txtJuriReal"
+															   id="txtJuriReal" maxlength="200" 
 															   placeholder="" name="DOMICILIOJ">
 													</div>
 												</div>
@@ -481,7 +481,7 @@
 									Finalizar &nbsp;
 									<i class="fa fa-check"></i>
 								</button>
-								<button class="btn btn-info pull-right" style="margin-left:5px; type="button"  onclick="denunciaOpenTab('tab_1')">
+								<button class="btn btn-info pull-right" style="margin-left:5px;" type="button"  onclick="denunciaOpenTab('tab_1')">
 								<i class="fa   fa-arrow-left"></i> &nbsp;
 								Anterior
 								</button>

@@ -222,32 +222,38 @@ $(document).on('ready',function(){
 	});
 
 	$('#finalizar').on('click',function(event){
-
-		$("#formulario").validate({
+		/*
+			$("#formulario").validate({
 			rules:{
 				"IDX_NUM_DOCU" : {
 					required: true,
 					minlength: 8
 				}
 			}
-		});
-		
-		$('#formulario').trigger('submit');
-/*		var url = $("form").attr('action');
-		var request = $.ajax({
-		  url: url,
-		  data: $("form").serialize(),
-		  method: "POST",
-		  dataType: "json"
-		});
-		 
-		request.done(function( data ) {
-			alert(data.mensaje);
-		});
-		 
-		request.fail(function( jqXHR, textStatus ) {
-		  console.log( "Request failed: " + textStatus );
 		});*/
+		var flag = 0;
+
+		flag = validar();
+
+			if(flag == 0){
+			$('#formulario').trigger('submit');
+			var url = $("form").attr('action');
+			var request = $.ajax({
+			  url: url,
+			  data: $("form").serialize(),
+			  method: "POST",
+			  dataType: "json"
+			});
+			 
+			request.done(function( data ) {
+				alert(data.mensaje);
+			});
+			 
+			request.fail(function( jqXHR, textStatus ) {
+			  console.log( "Request failed: " + textStatus );
+			});
+
+		}
 
 	});
 
@@ -315,3 +321,94 @@ $(document).on('ready',function(){
 		}
 	});
 });
+
+function validar(){
+    var valPerNatural = collapseNatural.getAttribute('aria-expanded');
+    var valPerJuridica = collapseJuridica.getAttribute('aria-expanded');
+    var flag = 0;
+    if(valPerNatural == "true")
+    {
+        flag = validaPerNat();
+    } else if(valPerJuridica == "true")
+    {
+        flag = validaPerJur();
+    }else{
+        alert("Seleccionar el tipo de persona.");
+        flag = 1;
+    } 
+    return flag;   
+}
+
+function validaPerNat(){
+    var valTipo = cboIdxTipoDocuIdentidad.value == "-1" ? 0: 1;
+    var valNumDoc = Number(txtCodNumeDocumento.value.length) == 0 ? 0 : 1;
+    var valNombre = Number(txtNatuNombre.value.length) == 0 ? 0 : 1;;
+    var valApPaterno = Number(txtNatuPaterno.value.length) == 0 ? 0 : 1;;
+    var valApMaterno = Number(txtNatuMaterno.value.length) == 0 ? 0 : 1;;
+    var valEmail = Number(txtNatuEmail.value.length) == 0 ? 0 : 1;;
+    var valFijo = Number(txtNatuFijo.value.length) == 0 ? 0 : 1;;
+    var valCelu = Number(txtNatuMovil.value.length) == 0 ? 0 : 1;;
+    var valUbigeo = Number(cboDisPNR.value) <= 0 ? 0: 1;
+    var domicilio = Number(txtNatuReal.value.length) == 0 ? 0 : 1;
+
+    var Mensaje = "Los siguientes campos deben ser llenados antes: \n "
+    var flag = 0;
+
+    if(valTipo == 0){ Mensaje = Mensaje + "Tipo de doc \n"; flag = 1;}
+    if(valNumDoc == 0) { Mensaje = Mensaje + "Num. de documento\n"; flag = 1;}
+    if(valNombre == 0) { Mensaje = Mensaje + "Nombre\n"; flag = 1;}
+    if(valApPaterno == 0) { Mensaje = Mensaje + "Apellido Paterno\n"; flag = 1;}
+    if(valApMaterno == 0) { Mensaje = Mensaje + "Apellido Materno\n"; flag = 1;}
+    if(valEmail == 0) { Mensaje = Mensaje + "Email\n"; flag = 1;}
+    if(valFijo == 0) { Mensaje = Mensaje + "Telefono fijo\n"; flag = 1;}
+    if(valCelu == 0) { Mensaje = Mensaje + "Celular\n"; flag = 1;}
+    if(valUbigeo == 0) { Mensaje = Mensaje + "Ubigeo\n"; flag = 1;}
+    if(domicilio == 0) { Mensaje = Mensaje + "Direccion \n"; flag = 1;}
+
+    var MenFormRecl = ["", ""];
+    MenFormRecl = validaFormReclamo();
+    Mensaje = Mensaje + " " + MenFormRecl[0];
+    flag = MenFormRecl[1];
+    if(flag == 1){alert(Mensaje);}
+    return flag;
+}
+
+function validaPerJur(){
+    //var valTipo = cboIdxTipoDocuIdentidad.value == "-1" ? 0: 1;
+    var valJurRUC = Number(txtJuriRuc.value.length) == 0 ? 0 : 1;
+    var valJurNombre= Number(txtJuriNombre.value.length) == 0 ? 0 : 1;
+    var valJurEmail = Number(txtJuriEmail.value.length) == 0 ? 0 : 1;
+    var valJurTel = Number(txtJuriTelefono.value.length) == 0 ? 0 : 1;
+    var valJurUbigeo = Number(cboDisPJR.value) <= 0 ? 0: 1;
+    var valJurdomici = Number(txtJuriReal.value.length) == 0 ? 0 : 1;
+
+    var Mensaje = "Los siguientes campos deben ser llenados antes: \n "
+    var flag = 0;
+
+    if(valJurRUC == 0){ Mensaje = Mensaje + "Numero de Ruc \n"; flag = 1;}
+    if(valJurNombre == 0) { Mensaje = Mensaje + "Razon Social\n"; flag = 1;}
+    if(valJurEmail == 0) { Mensaje = Mensaje + "Email\n"; flag = 1;}
+    if(valJurTel == 0) { Mensaje = Mensaje + "Telefono\n"; flag = 1;}
+    if(valJurUbigeo == 0) { Mensaje = Mensaje + "Ubigeo\n"; flag = 1;}
+    if(valJurdomici == 0) { Mensaje = Mensaje + "Direccion \n"; flag = 1;}
+
+    var MenFormRecl = ["", ""];
+    MenFormRecl = validaFormReclamo();
+    Mensaje = Mensaje + " " + MenFormRecl[0];
+    flag = MenFormRecl[1];
+    if(flag == 1){alert(Mensaje);}
+    return flag;
+}
+
+function validaFormReclamo()
+{
+     var  Mensaje = ""
+     var valDesHechos = Number(txtTxtDescHechos.value.length) == 0 ? 0 : 1;
+     var flag = 0;
+     if(valDesHechos == 0){ Mensaje = Mensaje + "Identificacion de atencion brindada \n"; flag = 1;}
+     var array = ["",""];
+     array[0]=Mensaje;
+     array[1]=flag;
+     //return Mensaje,flag;
+     return array;
+}

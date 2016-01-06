@@ -17,6 +17,147 @@ $(document).ready( function() {
 
 });
 
+
+
+function validarEmail(tipo) {
+
+    var email = "";
+    if(tipo=="N"){email = txtNatuEmail.value;}
+        else if(tipo=="J"){email = txtJuriEmail.value;}
+
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if ( !expr.test(email) )
+        {alert("La dirección de correo " + email + " es incorrecta.");
+            if(tipo=="N"){document.getElementById("txtNatuEmail").focus();}
+            else if(tipo=="J"){document.getElementById("txtJuriEmail").focus();}
+            
+        }
+}
+// onblur="validaTamanio('NN');"
+function validaTamanio(tipo){
+    var valor = 0;
+    var Tamaño = 0;
+    var mensaje = "";
+    if(tipo=="NN"){
+        valor = txtNatuNombre.value.length; 
+        tamaño = 120;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtNatuNombre").focus();
+        }
+    }
+    if(tipo=="DN"){
+        valor = txtCodNumeDocumento.value.length;
+        tamaño = 20;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtCodNumeDocumento").focus();
+        }
+    }
+    if(tipo=="PN"){
+        valor = txtNatuPaterno.value.length;
+        tamaño = 60;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtNatuPaterno").focus();
+        }
+    }
+    if(tipo=="MN"){
+        valor = txtNatuMaterno.value.length;
+        tamaño = 60;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtNatuMaterno").focus();
+        }
+    }
+    if(tipo=="FN"){
+        valor = txtNatuFijo.value.length;
+        tamaño = 100;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtNatuFijo").focus();
+        }
+    }
+    if(tipo=="CN"){
+        valor = txtNatuMovil.value.length;
+        tamaño = 100;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtNatuMovil").focus();
+        }
+    }
+    if(tipo=="RN"){
+        valor = txtNatuReal.value.length;
+        tamaño = 200;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtNatuReal").focus();
+        }
+    }
+    if(tipo=="RJ"){
+        valor = txtJuriRuc.value.length;
+        tamaño = 11;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtJuriRuc").focus();
+        }
+    }
+    if(tipo=="NJ"){
+        valor = txtJuriNombre.value.length;
+        tamaño = 200;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtJuriNombre").focus();
+        }
+    }
+    if(tipo=="TJ"){
+        valor = txtJuriTelefono.value.length;
+        tamaño = 100;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtJuriTelefono").focus();
+        }
+    }
+    if(tipo=="DR"){
+        valor = txtJuriReal.value.length;
+        tamaño = 200;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtJuriReal").focus();
+        }
+    }
+    if(tipo=="DF"){
+        valor = txtTxtDescHechos.value.length;
+        tamaño = 500;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtTxtDescHechos").focus();
+        }
+    }
+    if(tipo=="PF"){
+        valor = txtTxtPoteAfecHechos.value.length;
+        tamaño = 500;
+        if(valor>tamaño){
+            mensaje = "El tamaño maximo del campo es" + tamaño;
+            alert(mensaje);
+            document.getElementById("txtTxtPoteAfecHechos").focus();
+        }
+    }    
+
+}
+
 function otraUni(){
 
     var xcboUniversidad = $('#cboUniversidad').val();
@@ -89,7 +230,7 @@ function buscaPersonaDNI(){
     var xidxTipoDocuIdentidad = $('#cboIdxTipoDocuIdentidad').val();
     limpiar();
     if(xcodNumeDocumento == undefined || xcodNumeDocumento == null){
-        alert('Ingrese n�mero de DNI');
+        alert('Ingrese número de DNI');
         return;
     }else{
 
@@ -133,7 +274,7 @@ function buscaPersonaRUC(){
     var xidxTipoDocuIdentidad = '7';
     limpiar();
     if(xcodNumeDocumento == undefined || xcodNumeDocumento == null){
-        alert('Ingrese n�mero de DNI');
+        alert('Ingrese número de DNI');
         return;
     }else{
 
@@ -192,7 +333,7 @@ function getUbigeo(p,h,n){
                 placeholder: "Seleccionar...",
                 language : {
                     noResults : function(){
-                        return 'Seleccione Ubicaci�n';
+                        return 'Seleccione Ubicación';
                     }
                 }
             });
@@ -252,7 +393,7 @@ function prepareDataNuevaDenuncia(){
         var xdesTeleFijo= $('#txtNatuFijo').val();
         var xdesTeleCelular= $('#txtNatuMovil').val();
         if(!no_nulo(xdesTeleCelular)){
-            alert('Ingrese su n�mero de celular');
+            alert('Ingrese su número de celular');
             xbit=0;
             return;
         }
@@ -291,7 +432,7 @@ function prepareDataNuevaDenuncia(){
         var xidxTipoDocuIdentidad= '7';
         var xtxtNombRazoSocial= $('#txtJuriNombre').val();
         if(!no_nulo(xtxtNombRazoSocial)){
-            alert('Ingrese su raz�n social');
+            alert('Ingrese su razón social');
             xbit=0;
             return;
         }
@@ -303,7 +444,7 @@ function prepareDataNuevaDenuncia(){
         }
         var xdesTeleFijo= $('#txtJuriTelefono').val();
         if(!no_nulo(xdesTeleFijo)){
-            alert('Ingrese su n�mero de tel�fono fijo');
+            alert('Ingrese su número de teléfono fijo');
             xbit=0;
             return;
         }
@@ -346,7 +487,7 @@ function prepareDataNuevaDenuncia(){
         }
         xbit=1;
     }else{
-        alert('Ingrese su n�mero de documento de identidad o numero de RUC');
+        alert('Ingrese su número de documento de identidad o numero de RUC');
         xbit=0;
         return;
     }
@@ -371,7 +512,7 @@ function prepareDataNuevaDenuncia(){
     var xtxtDomiInstDenunciada= $('#txtTxtDomiInstDenunciada').val();
 
     if(!no_nulo(xtxtDomiInstDenunciada)){
-        alert('Ingrese la direcci�n de la entidad denunciada');
+        alert('Ingrese la dirección de la entidad denunciada');
         xbit=0;
         return;
     }
@@ -465,11 +606,11 @@ function prepareDataNuevaDenuncia(){
             fd.append(nameDes, $('#'+nameDes).val());
             if(i>0){
                 if($('#'+nameDes).val()== undefined ){
-                    alert('Falta descripci�n del archivo ' + i );
+                    alert('Falta descripción del archivo ' + i );
                     xbit=0;
                     return;
                 }else if($('#'+nameDes).val().length<10 ){
-                    alert('Descripci�n muy corta del archivo ' + i );
+                    alert('Descripción muy corta del archivo ' + i );
                     xbit=0;
                     return;
                 }

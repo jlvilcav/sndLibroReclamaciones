@@ -54,7 +54,7 @@ return array(
 
 		/*'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost', // '200.48.77.131''100.10.100.235',
+			'host'      => 'localhost', // '200.48.77.131''100.10.100.235', http://www.sunedu.gob.pe/phpmyadmin/
 			'database'  => 'libroreclamos',
 			'username'  => 'root',
 			'password'  => '', //'ANR2014soporte',
@@ -63,12 +63,23 @@ return array(
 			'prefix'    => '',
 		),*/
 
-		'mysql' => array(
+		/*'mysql' => array(
             'driver'    => 'mysql',
             'host'      => 'www.creative3ws.com',
             'database'  => 'bitrix_suneduj',
             'username'  => 'bitrix_suneduj',
             'password'  => '&$-~wy,oguTr',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ),*/
+
+		'mysql' => array(
+            'driver'    => 'mysql',
+            'host'      => 'www.sunedu.gob.pe',
+            'database'  => 'libroreclamos',
+            'username'  => 'root',
+            'password'  => 'ANR2014soporte',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

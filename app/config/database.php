@@ -52,16 +52,15 @@ return array(
 			'prefix'   => '',
 		),
 
-		/*'mysql' => array(
+		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost', // '200.48.77.131''100.10.100.235', http://www.sunedu.gob.pe/phpmyadmin/
-			'database'  => 'libroreclamos',
+			'host'      => '172.16.101.15', // '200.48.77.131''100.10.100.235', localhost
 			'username'  => 'root',
 			'password'  => '', //'ANR2014soporte',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-		),*/
+		),
 
 		/*'mysql' => array(
             'driver'    => 'mysql',
@@ -74,7 +73,7 @@ return array(
             'prefix'    => '',
         ),*/
 
-		'mysql' => array(
+		/*'mysql' => array(
             'driver'    => 'mysql',
             'host'      => 'www.sunedu.gob.pe',
             'database'  => 'libroreclamos',
@@ -83,7 +82,7 @@ return array(
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
-        ),
+        ),*/
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

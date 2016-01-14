@@ -28,7 +28,8 @@ return array(
 	|
 	*/
 
-	'host' => 'commodore.websitewelcome.com', //'smtp.office365.com',//
+	//'host' => 'commodore.websitewelcome.com', //'smtp.office365.com',//
+	'host' => 'smtp.office365.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +42,8 @@ return array(
 	|
 	*/
 
-	'port' => 465,// 587, 
+	//'port' => 465,// 587,  
+	'port' => 587,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +56,8 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'rcarpio@creative3ws.com', 'name' => 'Renzo Carpio Ponce'),
+	//'from' => array('address' => 'rcarpio@creative3ws.com', 'name' => 'Renzo Carpio Ponce'),
+	'from' => array('address' => 'webmaster@sunedu.gob.pe', 'name' => 'WebMaster'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,6 +70,7 @@ return array(
 	|
 	*/
 
+	//'encryption' => 'ssl',
 	'encryption' => 'ssl',
 
 	/*
@@ -80,7 +84,8 @@ return array(
 	|
 	*/
 
-	'username' => 'rcarpio@creative3ws.com',
+	//'username' => 'rcarpio@creative3ws.com',
+	'username' => 'webmaster@sunedu.gob.pe',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +98,8 @@ return array(
 	|
 	*/
 
-	'password' => 'Rbtx123.',
+	//'password' => 'Rbtx123.',
+	'password' => 'Banu9467',
 
 	/*
 	|--------------------------------------------------------------------------

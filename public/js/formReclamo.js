@@ -246,7 +246,10 @@ $(document).on('ready',function(){
 			});
 			 
 			request.done(function( data ) {
+				window.close();
 				alert(data.mensaje);
+				
+				
 			});
 			 
 			request.fail(function( jqXHR, textStatus ) {

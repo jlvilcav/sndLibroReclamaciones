@@ -14,7 +14,7 @@ class perNaturalRepo extends BaseRepo{
     }
     public function findByDni($dni){
         return \DB::table('pernatural')
-            ->join('ubigeos', 'perNatural.IDX_UBIGEO', '=', 'ubigeos.IDX_UBIGEO')
+            ->join('ubigeos', 'pernatural.IDX_UBIGEO', '=', 'ubigeos.IDX_UBIGEO')
             ->select('pernatural.*', 'ubigeos.*')
             ->where('pernatural.IDX_NUM_DOCU','=',$dni)
             ->get();

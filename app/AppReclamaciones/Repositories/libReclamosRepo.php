@@ -71,7 +71,13 @@ class libReclamosRepo extends BaseRepo
             \DB::table('libreclamos')->where('IDX_LIB_REC',$idReclamo)
                                      ->update(array('NUM_RECLAM' => $numReclamo));
             $arResult = array(
-                'mensaje' => 'Su reclamo ha sido generado: '.$numReclamo,
+                'mensaje' => 'Su reclamo ha sido generado: '.$numReclamo.'
+Hemos recibido su reclamo satisfacoriamente. 
+Una copia del reclamo ha sido enviado a su correo electrónico.
+Le brindamos una respuesta en un plazo máximo de 30 (treinta) días hábiles.
+De tener alguna consulta Puede escribirnos a consultas@Sunedu.gob.pe
+Gracias.
+Responsable del Libro de Reclamaciones',
                 'estado' => true
             );
             if($inputs['flagPersona']){ 

@@ -81,13 +81,19 @@ Responsable del Libro de Reclamaciones',
                 'estado' => true
             );
             if($inputs['flagPersona']){ 
-                $this->sendEmail = $inputs['EMAIL'];
-                $this->rutaPDF = asset('/pdf/'.$idReclamo.'/x.pdf');
+
+                if($inputs['flagPersona'] == 'N'){
+                    $this->sendEmail = $inputs['EMAIL'];
+                }else{
+                    $this->sendEmail = $inputs['EMAILJ'];
+                }
+                
+                $this->rutaPDF = asset('/pdf/'.$idReclamo.'/x.pdf'); //'/x.pdf'); '/'.$numReclamo.'.pdf');
                 $data = array();                
                 \Mail::send('emails.reclamo.parrafo', $data, function($message)
                 {
                     $message->to($this->sendEmail, 'SUNEDU')
-                                        ->cc('webmaster@sunedu.gob.pe')
+                                        ->cc('reclamos@sunedu.gob.pe')
                                         ->subject('SUNEDU - Formulario de Reclamación');
                     $message->attach($this->rutaPDF);
                 });

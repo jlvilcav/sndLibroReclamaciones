@@ -120,8 +120,8 @@
 				</p>
 				<br/>
 				Nro. Denuncia : 10242015<br/>
-				Fecha : 19/08/2015 10:21<br/>
-				Denunciante : Andres Alvites Valladares<br/>
+				Fecha : 18/01/2016 10:21<br/>
+				Denunciante : OTI SUNEDU<br/>
 				<br/>
 			</div>
 			<div class="modal-footer">

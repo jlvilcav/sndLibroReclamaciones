@@ -246,9 +246,9 @@ $(document).on('ready',function(){
 			});
 			 
 			request.done(function( data ) {
-				window.close();
-				alert(data.mensaje);
 				
+				alert(data.mensaje);
+				location.reload();
 				
 			});
 			 

@@ -51,18 +51,18 @@ return array(
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
-		/*'mysql' => array(
+		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost', // '200.48.77.131''100.10.100.235', localhost 172.16.101.15
 			'database'  => 'libroreclamos',
-			'username'  => 'Admin',
-			'password'  => 'web@2016lr', //'ANR2014soporte',
+			'username'  => 'root',
+			'password'  => '$Su43Du$$mySQL', //'ANR2014soporte',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-		),*/
+		),/**/
 
-		'mysql' => array(
+		/*'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost', // '200.48.77.131''100.10.100.235', localhost 172.16.101.15
 			'database'  => 'libroreclamos',
@@ -71,7 +71,7 @@ return array(
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-		),/**/
+		),*/
 
 		/*'mysql' => array(
             'driver'    => 'mysql',

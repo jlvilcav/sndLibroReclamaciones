@@ -11,5 +11,5 @@ namespace AppReclamaciones\Entities;
 
 class libReclamos extends \Eloquent
 {
-    protected $table = 'libReclamos';
+    protected $table = 'libreclamos';
 }

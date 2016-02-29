@@ -80,14 +80,13 @@ Gracias.
 Responsable del Libro de Reclamaciones',
                 'estado' => true
             );
-            if($inputs['flagPersona']){ 
-
+            
                 if($inputs['flagPersona'] == 'N'){
                     $this->sendEmail = $inputs['EMAIL'];
                 }else{
                     $this->sendEmail = $inputs['EMAILJ'];
                 }
-                
+
                 $this->rutaPDF = asset('/pdf/'.$idReclamo.'/x.pdf'); //'/x.pdf'); '/'.$numReclamo.'.pdf');
                 $data = array();                
                 \Mail::send('emails.reclamo.parrafo', $data, function($message)

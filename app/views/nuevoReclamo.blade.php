@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link rel="shortcut icon" href="../images/sunedu-favicon.png">
+	<link rel="shortcut icon" href="{{asset('images/sunedu-favicon.png')}}">
 	<link href="{{asset('bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">

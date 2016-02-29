@@ -11,6 +11,6 @@ namespace AppReclamaciones\Entities;
 
 class perJuridica extends \Eloquent
 {
-    protected $table = 'perJuridica';
+    protected $table = 'perjuridica';
     protected $hidden = array('password', 'remember_token');
 }

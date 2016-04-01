@@ -20,61 +20,7 @@
 	<link href="{{asset('bootstrap/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css">
 
-	<script src="{{asset('bootstrap/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
-	<script src="{{asset('bootstrap/plugins/jQueryUI/jquery-ui.min.js')}}" type="text/javascript"></script>
-	<script type="text/javascript">
-		$.widget.bridge('uibutton', $.ui.button);
-	</script>
-	<script src="{{asset('bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/datatables/dataTables.bootstrap.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js')}}" type="text/javascript"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="{{asset('bootstrap/plugins/morris/morris.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/sparkline/jquery.sparkline.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/knob/jquery.knob.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.date.extensions.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.extensions.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/daterangepicker/moment.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/datepicker/bootstrap-datepicker.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/plugins/fastclick/fastclick.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/Scripts/reclamosLibro.js')}}" type="text/javascript"></script>
-	<script>
-		var sunePath = 'http://localhost/';
-		//var sunePath = 'http://www.sunedu.gob.pe/LibroReclamacion/';
-	</script>
-	<script src="{{asset('bootstrap/Scripts/Common.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/Scripts/licenciamiento.js')}}" type="text/javascript"></script>
-	<script>
-		(function($) {
-			$.fn.goTo = function() {
-				$('html, body').animate({
-					scrollTop: $(this).offset().top + 'px'
-				}, 'fast');
-				return this; // for chaining...
-			}
-		})(jQuery);
-	</script>
-	<script type="text/javascript" src="{{asset('js/formReclamo.js')}}"></script>
-	<script>
-		$(document).ready(function(){
-			$(document).ajaxStart(function(){
-				$('#liLoading').show();
-			});
-			$(document).ajaxStop(function(){
-				$('#liLoading').hide();
-			});
-		});
-	</script>
+
 	<style>
 		.disabled-content {
 			z-index: 1000;
@@ -87,7 +33,7 @@
 
 	<title>Libro de Reclamaciones</title>
 </head>
-<body>
+<body onload="cargaTab2();">
 
 <style>
 	/* * { border:1px solid black; }*/
@@ -137,8 +83,8 @@
 			<!-- Custom Tabs -->
 			<div class="nav-tabs-custom" id="tabsDenuncia">
 				<ul class="hidden-xs hidden-sm visible-md visible-lg nav nav-tabs">
-					<li class="active"><a href="#tab_1" data-toggle="tab">Datos Generales</a></li>
-					<li class=""><a href="#tab_2" data-toggle="tab">Hoja de Reclamación Virtual</a></li>
+					<li class="active" id="tab1"><a href="#tab_1" data-toggle="tab">Datos Generales</a></li>
+					<li class="" id="tab2" ><a id="link2" href="#tab_2" data-toggle="tab">Hoja de Reclamación Virtual</a></li>
 				</ul>
 				<div class="tab-content col-sm-12 col-md-12">
 					<div class="tab-pane fade in active" id="tab_1">
@@ -618,12 +564,12 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12 col-md-12">
-								<p style="text-decoration:underline;">
+								<p style="text-decoration:underline; visibility: hidden" >
 									Acciones adoptadas por la entidad:
 								</p>
 							</div>
 						</div>
-						<div class="row">
+						<div id="DivAdop" class="row" style="visibility: hidden" >
 							<div class="form-horizontal col-sm-12 col-md-12">
 								<div class="form-group col-sm-12 col-md-12">
 									<div class="col-sm-12 col-md-12">
@@ -719,6 +665,62 @@
 	</div> <!-- /.row -->
 </section>
 </form>
+
+	<script src="{{asset('bootstrap/plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+	<script src="{{asset('bootstrap/plugins/jQueryUI/jquery-ui.min.js')}}" type="text/javascript"></script>
+	<script type="text/javascript">
+		$.widget.bridge('uibutton', $.ui.button);
+	</script>
+	<script src="{{asset('bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/select2/select2.full.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datatables/dataTables.bootstrap.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js')}}" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="{{asset('bootstrap/plugins/morris/morris.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/sparkline/jquery.sparkline.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/knob/jquery.knob.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.date.extensions.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/input-mask/jquery.inputmask.extensions.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/daterangepicker/moment.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/datepicker/bootstrap-datepicker.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/plugins/fastclick/fastclick.min.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/Scripts/reclamosLibro.js')}}" type="text/javascript"></script>
+	<script>
+		var sunePath = 'http://localhost/';
+		//var sunePath = 'http://www.sunedu.gob.pe/LibroReclamacion/';
+	</script>
+	<script src="{{asset('bootstrap/Scripts/Common.js')}}" type="text/javascript"></script>
+	<script src="{{asset('bootstrap/Scripts/licenciamiento.js')}}" type="text/javascript"></script>
+	<script>
+		(function($) {
+			$.fn.goTo = function() {
+				$('html, body').animate({
+					scrollTop: $(this).offset().top + 'px'
+				}, 'fast');
+				return this; // for chaining...
+			}
+		})(jQuery);
+	</script>
+	<script type="text/javascript" src="{{asset('js/formReclamo.js')}}"></script>
+	<script>
+		$(document).ready(function(){
+			$(document).ajaxStart(function(){
+				$('#liLoading').show();
+			});
+			$(document).ajaxStop(function(){
+				$('#liLoading').hide();
+			});
+		});
+	</script>
 
 </body>
 </html>

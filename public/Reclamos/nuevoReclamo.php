@@ -137,7 +137,7 @@
 			<!-- Custom Tabs -->
 			<div class="nav-tabs-custom" id="tabsDenuncia">
 				<ul class="hidden-xs hidden-sm visible-md visible-lg nav nav-tabs">
-					<li class="active"><a href="#tab_1" data-toggle="tab">Datos Generales</a></li>
+					<li class="active" id="tab1" name="tab1"><a href="#tab_1" data-toggle="tab">Datos Generales</a></li>
 					<li class=""><a href="#tab_2" data-toggle="tab">Hoja de Reclamación Virtual</a></li>
 				</ul>
 				<div class="tab-content col-sm-12 col-md-12">
@@ -470,7 +470,7 @@
 									Finalizar &nbsp;
 									<i class="fa fa-check"></i>
 								</button>
-								<button class="btn btn-info pull-right" style="margin-left:5px; type="button"  onclick="denunciaOpenTab('tab_1')">
+								<button class="btn btn-info pull-right" style="margin-left:5px;" type="button"  onclick="denunciaOpenTab('tab_1')">
 								<i class="fa   fa-arrow-left"></i> &nbsp;
 								Anterior
 								</button>

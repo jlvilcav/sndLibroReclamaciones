@@ -341,6 +341,7 @@ function validar(){
         alert("Seleccionar el tipo de persona.");
         flag = 1;
     } 
+    
     return flag;   
 }
 
@@ -370,11 +371,14 @@ function validaPerNat(){
     if(valUbigeo == 0) { Mensaje = Mensaje + "Ubigeo\n"; flag = 1;}
     if(domicilio == 0) { Mensaje = Mensaje + "Direccion \n"; flag = 1;}
 
+    
+    /*
     var MenFormRecl = ["", ""];
     MenFormRecl = validaFormReclamo();
     Mensaje = Mensaje + " " + MenFormRecl[0];
-    flag = MenFormRecl[1];
+    flag = MenFormRecl[1];*/
     if(flag == 1){alert(Mensaje);}
+    
     return flag;
 }
 
@@ -397,11 +401,15 @@ function validaPerJur(){
     if(valJurUbigeo == 0) { Mensaje = Mensaje + "Ubigeo\n"; flag = 1;}
     if(valJurdomici == 0) { Mensaje = Mensaje + "Direccion \n"; flag = 1;}
 
+    /*
     var MenFormRecl = ["", ""];
     MenFormRecl = validaFormReclamo();
     Mensaje = Mensaje + " " + MenFormRecl[0];
     flag = MenFormRecl[1];
+    */
+   
     if(flag == 1){alert(Mensaje);}
+    
     return flag;
 }
 

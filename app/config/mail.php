@@ -57,7 +57,8 @@ return array(
 	*/
 
 	//'from' => array('address' => 'rcarpio@creative3ws.com', 'name' => 'Renzo Carpio Ponce'),
-	'from' => array('address' => 'webmaster@sunedu.gob.pe', 'name' => 'WebMaster'),
+	//'from' => array('address' => 'webmaster@sunedu.gob.pe', 'name' => 'WebMaster'),
+	'from' => array('address' => 'webmaster@sunedu.gob.pe', 'name' => 'Reclamos'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -99,7 +100,7 @@ return array(
 	*/
 
 	//'password' => 'Rbtx123.',
-	'password' => 'Jorge@vilca1',
+	'password' => 'Jorge@vilca2',
 
 	/*
 	|--------------------------------------------------------------------------

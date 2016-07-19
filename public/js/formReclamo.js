@@ -235,7 +235,9 @@ $(document).on('ready',function(){
 		$( "#finalizar" ).prop( "disabled", true );
 		var flag = 0;
 
-		flag = validar();
+		//flag = validar();  //19.07.2016
+
+		flag = validarFinal();
 
 			if(flag == 0){
 			$('#formulario').trigger('submit');
@@ -259,6 +261,8 @@ $(document).on('ready',function(){
 			});
 
 		}
+
+
 
 	});
 
@@ -346,6 +350,33 @@ function validar(){
     
     return flag;   
 }
+
+function validarFinal(){
+
+	var flag1 = validar();
+	var flagFinal = 0;
+	var valNumDoc = Number(txtTxtDescHechos.value.length) == 0 ? 0 : 1;
+
+	//alert(valNumDoc);
+
+
+	if(flag1 == 0) 
+	{
+		if (valNumDoc > 0) {
+			flagFinal = 0;
+		}else{
+			flagFinal = 1;
+			alert("llenar el campo Descripción o detalle del reclamo.");
+			$( "#finalizar" ).prop( "disabled", false );
+		}
+	}else {
+		flagFinal = 1;
+	}
+
+
+	return flagFinal;
+}
+
 
 function validaPerNat(){
     var valTipo = cboIdxTipoDocuIdentidad.value == "-1" ? 0: 1;

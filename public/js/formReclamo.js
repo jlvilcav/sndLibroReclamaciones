@@ -231,6 +231,8 @@ $(document).on('ready',function(){
 				}
 			}
 		});*/
+
+		$( "#finalizar" ).prop( "disabled", true );
 		var flag = 0;
 
 		flag = validar();
@@ -418,7 +420,7 @@ function validaFormReclamo()
      var  Mensaje = ""
      var valDesHechos = Number(txtTxtDescHechos.value.length) == 0 ? 0 : 1;
      var flag = 0;
-     if(valDesHechos == 0){ Mensaje = Mensaje + "Identificacion de atencion brindada \n"; flag = 1;}
+     if(valDesHechos == 0){ Mensaje = Mensaje + "Descripcion o detalle del reclamo \n"; flag = 1;}
      var array = ["",""];
      array[0]=Mensaje;
      array[1]=flag;

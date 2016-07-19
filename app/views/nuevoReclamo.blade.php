@@ -441,7 +441,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12 col-md-12">
-								<p style="text-decoration:underline;">Identificación del usuario </p>
+								<p style="text-decoration:underline;">Identificación del usuario:</p>
 							</div>
 						</div>
 						<div class="row">
@@ -504,7 +504,7 @@
 						<div class="row" style="visibility: hidden" hidden>
 							<div class="col-sm-12 col-md-12">
 								<p style="text-decoration:underline;">
-									Identificación de la Atención Brindada
+									Descripción o detalle del reclamo
 								</p>
 							</div>
 						</div>
@@ -549,7 +549,7 @@
 						<div class="row">
 							<div class="col-sm-12 col-md-12">
 								<p style="text-decoration:underline;">
-									Identificación de la Atención Brindada:
+									Descripción o detalle del reclamo:
 								</p>
 							</div>
 						</div>

@@ -19,6 +19,7 @@
 	<link href="{{asset('bootstrap/plugins/datepicker/datepicker3.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('bootstrap/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('bootstrap/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css">
+	<script src="{{asset('bootstrap/Scripts/reclamosLibro.js')}}" type="text/javascript"></script>
 
 
 	<style>
@@ -211,8 +212,26 @@
 
 											<div class="form-horizontal col-sm-12 col-md-12">
 												<div class="form-group col-sm-12 col-md-12">
-													<label class="col-sm-12 col-md-3">Domicilio Real</label>
-													<div class="col-sm-12 col-md-3">
+													<div>
+														<label class="col-sm-12 col-md-2">Domicilio Real</label>
+
+													</div>
+													<div class="col-sm-12 col-md-10" >
+														<input type="text"
+															   class="form-control text-uppercase"
+															   id="txtNatuReal" maxlength="200" 
+															   placeholder="">
+													</div>
+													
+												</div>
+
+
+
+												<div class="form-group col-sm-12 col-md-12">
+													
+
+													<div>
+														<div class="col-sm-12 col-md-3">
 														<select class="form-control" id="cboDepPNR" name="" >
 																<option value="-1">Seleccione Dpto</option>
 																@foreach ($pais as $p)
@@ -220,7 +239,7 @@
 																@endforeach														
 														</select>
 													</div>
-													<div class="col-sm-12 col-md-3">
+														<div class="col-sm-12 col-md-3">
 														<select class="form-control" id="cboProPNR" >
 															<?php //echo $this->selectUbigeoPro; ?>
 														</select>
@@ -230,13 +249,6 @@
 															<?php //echo $this->selectUbigeoDis; ?>
 														</select>
 													</div>
-												</div>
-												<div class="form-group col-sm-12 col-md-12">
-													<div class="col-sm-12 col-md-12">
-														<input type="text"
-															   class="form-control text-uppercase"
-															   id="txtNatuReal" maxlength="200" 
-															   placeholder="">
 													</div>
 												</div>
 
@@ -693,7 +705,7 @@
 	<script src="{{asset('bootstrap/plugins/fastclick/fastclick.min.js')}}" type="text/javascript"></script>
 	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
 	<script src="{{asset('bootstrap/dist/js/app.js')}}" type="text/javascript"></script>
-	<script src="{{asset('bootstrap/Scripts/reclamosLibro.js')}}" type="text/javascript"></script>
+	
 	<script>
 		var sunePath = 'http://localhost/';
 		//var sunePath = 'http://www.sunedu.gob.pe/LibroReclamacion/';
